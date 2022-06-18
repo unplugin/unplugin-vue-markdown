@@ -39,7 +39,7 @@
     "lint": "eslint \"**/*.{ts,vue,mjs}\"",
     "lint:fix": "eslint \"**/*.{ts,vue,mjs}\" --fix",
     "prepublishOnly": "npm run build",
-    "release": "bumpp --commit --tag --push"
+    "release": "bumpp --commit --tag --push && npm publish"
   },
   "peerDependencies": {
     "vite": "^2.0.0"
