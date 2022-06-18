@@ -93,7 +93,8 @@ export function createMarkdown(options: ResolvedOptions) {
 
     if (options.frontmatter) {
       if (options.excerpt && data) {
-        if (data.excerpt !== undefined) excerptKeyOverlapping = true
+        if (data.excerpt !== undefined)
+          excerptKeyOverlapping = true
         data.excerpt = excerpt
       }
 
@@ -119,7 +120,8 @@ export function createMarkdown(options: ResolvedOptions) {
     if (options.excerpt) {
       scriptLines.push(`const excerpt = ${JSON.stringify(excerpt)}`)
 
-      if (!excerptKeyOverlapping) excerptExportsLine = `export const excerpt = ${JSON.stringify(excerpt)}\n`
+      if (!excerptKeyOverlapping)
+        excerptExportsLine = `export const excerpt = ${JSON.stringify(excerpt)}\n`
 
       if (!isVue2 && options.exposeExcerpt && !defineExposeRE.test(hoistScripts.scripts.join('')))
         scriptLines.push('defineExpose({ excerpt })')

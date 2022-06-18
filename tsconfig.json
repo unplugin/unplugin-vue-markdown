@@ -5,6 +5,7 @@
     "lib": ["ESNext", "DOM"],
     "esModuleInterop": true,
     "strict": true,
+    "jsx": "preserve",
     "strictNullChecks": true,
     "moduleResolution": "Node",
     "resolveJsonModule": true,

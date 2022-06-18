@@ -1,4 +1,3 @@
-/* eslint-disable no-use-before-define */
 import type MarkdownIt from 'markdown-it'
 import type { FilterPattern } from '@rollup/pluginutils'
 
@@ -162,7 +161,7 @@ export interface Options {
   /**
    * Add `v-pre` to `<code>` tag to escape curly brackets interpolation
    *
-   * @see https://github.com/antfu/vite-plugin-md/issues/14
+   * @see https://github.com/antfu/vite-plugin-vue-markdown/issues/14
    * @default true
    */
   escapeCodeTagInterpolation?: boolean

@@ -14,7 +14,7 @@ function VitePluginMarkdown(userOptions: Options = {}): Plugin {
   )
 
   return {
-    name: 'vite-plugin-md',
+    name: 'vite-plugin-vue-markdown',
     enforce: 'pre',
     transform(raw, id) {
       if (!filter(id))
@@ -31,7 +31,7 @@ function VitePluginMarkdown(userOptions: Options = {}): Plugin {
         return
 
       const defaultRead = ctx.read
-      ctx.read = async function() {
+      ctx.read = async function () {
         return markdownToVue(ctx.file, await defaultRead())
       }
     },

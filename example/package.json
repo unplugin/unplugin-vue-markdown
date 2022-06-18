@@ -1,24 +1,24 @@
 {
   "private": true,
   "scripts": {
-    "dev": "cross-env DEBUG=vite-plugin-md:* vite",
-    "build": "cross-env DEBUG=vite-plugin-md:* vite build"
+    "dev": "cross-env DEBUG=vite-plugin-vue-markdown:* vite",
+    "build": "cross-env DEBUG=vite-plugin-vue-markdown:* vite build"
   },
   "dependencies": {
-    "@vueuse/head": "^0.7.5",
-    "vue": "^3.2.30",
-    "vue-router": "^4.0.12"
+    "@vueuse/head": "^0.7.6",
+    "vue": "^3.2.37",
+    "vue-router": "^4.0.16"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^2.1.0",
-    "@vue/compiler-sfc": "^3.2.30",
+    "@vitejs/plugin-vue": "^2.3.3",
+    "@vue/compiler-sfc": "^3.2.37",
     "cross-env": "^7.0.3",
-    "markdown-it-prism": "^2.2.2",
-    "prismjs": "^1.26.0",
-    "typescript": "^4.5.5",
-    "vite": "^2.7.13",
-    "vite-plugin-inspect": "^0.3.13",
-    "vite-plugin-md": "workspace:*",
-    "vite-plugin-pages": "^0.20.2"
+    "markdown-it-prism": "^2.2.4",
+    "prismjs": "^1.28.0",
+    "typescript": "^4.7.4",
+    "vite": "^2.9.12",
+    "vite-plugin-inspect": "^0.5.0",
+    "vite-plugin-pages": "^0.24.2",
+    "vite-plugin-vue-markdown": "workspace:*"
   }
 }

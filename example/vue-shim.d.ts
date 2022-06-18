@@ -1,4 +1,3 @@
-/* eslint-disable import/no-duplicates */
 declare module '*.vue' {
   import type { ComponentOptions } from 'vue'
   const Component: ComponentOptions

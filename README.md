@@ -1,20 +1,18 @@
-# vite-plugin-md
+# vite-plugin-vue-markdown
 
-Markdown for Vite
+[![NPM version](https://img.shields.io/npm/v/vite-plugin-vue-markdown?color=a1b858)](https://www.npmjs.com/package/vite-plugin-vue-markdown)
+
+Compile Markdown to Vue component. A lite version of [vite-plugin-md](https://github.com/antfu/vite-plugin-md).
 
 - Use Markdown as Vue components
 - Use Vue components in Markdown
-
-[![NPM version](https://img.shields.io/npm/v/vite-plugin-md?color=a1b858)](https://www.npmjs.com/package/vite-plugin-md)
-
-> ℹ️ **0.2.x is for Vite 2 and 0.1.x is for Vite 1**
 
 ## Install
 
 Install
 
 ```bash
-npm i vite-plugin-md -D # yarn add vite-plugin-md -D
+npm i vite-plugin-vue-markdown -D # yarn add vite-plugin-vue-markdown -D
 ```
 
 Add it to `vite.config.js`
@@ -22,7 +20,7 @@ Add it to `vite.config.js`
 ```ts
 // vite.config.js
 import Vue from '@vitejs/plugin-vue'
-import Markdown from 'vite-plugin-md'
+import Markdown from 'vite-plugin-vue-markdown'
 
 export default {
   plugins: [
@@ -81,7 +79,7 @@ app.mount()
 
 ```html
 <script setup>
-import { Counter } from './Counter.vue
+import { Counter } from './Counter.vue'
 </script>
 
 <Counter :init='5'/>
@@ -125,7 +123,7 @@ npm i @vueuse/head
 ```js
 // vite.config.js
 import Vue from '@vitejs/plugin-vue'
-import Markdown from 'vite-plugin-md'
+import Markdown from 'vite-plugin-vue-markdown'
 
 export default {
   plugins: [
@@ -165,11 +163,11 @@ For more options available, please refer to [`@vueuse/head`'s docs](https://gith
 
 ## Options
 
-`vite-plugin-md` uses [`markdown-it`](https://github.com/markdown-it/markdown-it) under the hood, see [`markdown-it`'s docs](https://markdown-it.github.io/markdown-it/) for more details
+`vite-plugin-vue-markdown` uses [`markdown-it`](https://github.com/markdown-it/markdown-it) under the hood, see [`markdown-it`'s docs](https://markdown-it.github.io/markdown-it/) for more details
 
 ```ts
 // vite.config.js
-import Markdown from 'vite-plugin-md'
+import Markdown from 'vite-plugin-vue-markdown'
 
 export default {
   plugins: [
@@ -207,7 +205,7 @@ Or the pre-configured starter template [Vitesse](https://github.com/antfu/vitess
 ### Work with [vite-plugin-voie](https://github.com/vamplate/vite-plugin-voie)
 
 ```ts
-import Markdown from 'vite-plugin-md'
+import Markdown from 'vite-plugin-vue-markdown'
 import Voie from 'vite-plugin-voie'
 
 export default {
@@ -228,7 +226,7 @@ Put your markdown under `./src/pages/xx.md`, then you can access the page via ro
 `vite-plugin-components` allows you to do on-demand components auto importing without worrying about registration.
 
 ```ts
-import Markdown from 'vite-plugin-md'
+import Markdown from 'vite-plugin-vue-markdown'
 import ViteComponents from 'vite-plugin-components'
 
 export default {
@@ -252,13 +250,13 @@ Components under `./src/components` can be directly used in markdown components,
 
 ```ts
 declare module '*.vue' {
-  import { ComponentOptions } from 'vue'
+  import type { ComponentOptions } from 'vue'
   const Component: ComponentOptions
   export default Component
 }
 
 declare module '*.md' {
-  import { ComponentOptions } from 'vue'
+  import type { ComponentOptions } from 'vue'
   const Component: ComponentOptions
   export default Component
 }
