@@ -18,8 +18,5 @@ const excerpt = \\"\\\\nThis is an excerpt.\\\\n\\\\n\\"
 <script>
 export const title = \\"Hey\\"
 export const excerpt = \\"\\\\nThis is an excerpt.\\\\n\\\\n\\"
-
-</script>
-
-"
+</script>"
 `;

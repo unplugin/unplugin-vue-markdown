@@ -2,6 +2,7 @@ import MarkdownIt from 'markdown-it'
 import matter from 'gray-matter'
 import { toArray, uniq } from '@antfu/utils'
 import type { ResolvedOptions } from './types'
+import { componentPlugin } from './plugins/component'
 
 const scriptSetupRE = /<\s*script([^>]*)\bsetup\b([^>]*)>([\s\S]*)<\/script>/mg
 const defineExposeRE = /defineExpose\s*\(/mg
@@ -45,6 +46,8 @@ export function createMarkdown(options: ResolvedOptions) {
     typographer: true,
     ...options.markdownItOptions,
   })
+
+  markdown.use(componentPlugin)
 
   markdown.linkify.set({ fuzzyLink: false })
 
@@ -168,8 +171,10 @@ export function createMarkdown(options: ResolvedOptions) {
           : []),
         ]
 
-    const sfc = `<template>${html}</template>\n${scripts.filter(Boolean).join('\n')}\n${customBlocks.blocks.join('\n')}\n`
-
-    return sfc
+    return [
+      `<template>${html}</template>`,
+      ...scripts.map(i => i.trim()).filter(Boolean),
+      ...customBlocks.blocks,
+    ].join('\n')
   }
 }

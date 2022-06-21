@@ -1,5 +1,21 @@
 // Vitest Snapshot v1
 
+exports[`transform > Vue directives 1`] = `
+"<template><div class=\\"markdown-body\\">
+<button @click=\\"onClick\\"></button>
+</div></template>
+<script setup lang=\\"ts\\">
+const frontmatter = {\\"name\\":\\"My Cool App\\"}
+defineExpose({ frontmatter })
+function onClick() {
+  // ...
+}
+</script>
+<script lang=\\"ts\\">
+export const name = \\"My Cool App\\"
+</script>"
+`;
+
 exports[`transform > basic 1`] = `
 "<template><div class=\\"markdown-body\\"><h1>Hello</h1>
 <ul>
@@ -14,9 +30,7 @@ defineExpose({ frontmatter })
 </script>
 <script>
 export const title = \\"Hey\\"
-</script>
-
-"
+</script>"
 `;
 
 exports[`transform > couldn't expose frontmatter 1`] = `
@@ -24,15 +38,11 @@ exports[`transform > couldn't expose frontmatter 1`] = `
 </div></template>
 <script setup>
 const frontmatter = {\\"title\\":\\"Hey\\"}
-
 defineExpose({ test: 'test'})
-
 </script>
 <script>
 export const title = \\"Hey\\"
-</script>
-
-"
+</script>"
 `;
 
 exports[`transform > escapeCodeTagInterpolation 1`] = `
@@ -43,9 +53,7 @@ exports[`transform > escapeCodeTagInterpolation 1`] = `
 <script setup>
 const frontmatter = {}
 defineExpose({ frontmatter })
-</script>
-
-"
+</script>"
 `;
 
 exports[`transform > exposes frontmatter 1`] = `
@@ -57,9 +65,7 @@ defineExpose({ frontmatter })
 </script>
 <script>
 export const title = \\"Hey\\"
-</script>
-
-"
+</script>"
 `;
 
 exports[`transform > frontmatter interpolation 1`] = `
@@ -72,9 +78,7 @@ defineExpose({ frontmatter })
 </script>
 <script>
 export const name = \\"My Cool App\\"
-</script>
-
-"
+</script>"
 `;
 
 exports[`transform > script setup 1`] = `
@@ -84,12 +88,8 @@ exports[`transform > script setup 1`] = `
 <script setup lang=\\"ts\\">
 const frontmatter = {}
 defineExpose({ frontmatter })
-
 import Foo from './Foo.vue'
-
-</script>
-
-"
+</script>"
 `;
 
 exports[`transform > style 1`] = `
@@ -100,6 +100,5 @@ exports[`transform > style 1`] = `
 const frontmatter = {}
 defineExpose({ frontmatter })
 </script>
-<style>h1 { color: red }</style>
-"
+<style>h1 { color: red }</style>"
 `;

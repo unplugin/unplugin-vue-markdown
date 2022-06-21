@@ -84,4 +84,21 @@ This is {{frontmatter.name}}
 `
     expect(markdownToVue('', md)).toMatchSnapshot()
   })
+
+  it('Vue directives', () => {
+    const md = `
+---
+name: 'My Cool App'
+---
+
+<script setup lang="ts">
+function onClick() {
+  // ...
+}
+</script>
+
+<button @click="onClick"></button>
+`
+    expect(markdownToVue('', md)).toMatchSnapshot()
+  })
 })
