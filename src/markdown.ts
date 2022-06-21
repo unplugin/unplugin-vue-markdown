@@ -1,15 +1,23 @@
 import MarkdownIt from 'markdown-it'
 import matter from 'gray-matter'
-import { toArray } from '@antfu/utils'
+import { toArray, uniq } from '@antfu/utils'
 import type { ResolvedOptions } from './types'
 
-const scriptSetupRE = /<\s*script[^>]*\bsetup\b[^>]*>([\s\S]*)<\/script>/mg
+const scriptSetupRE = /<\s*script([^>]*)\bsetup\b([^>]*)>([\s\S]*)<\/script>/mg
 const defineExposeRE = /defineExpose\s*\(/mg
 
+interface ScriptMeta {
+  code: string
+  attr: string
+}
+
 function extractScriptSetup(html: string) {
-  const scripts: string[] = []
-  html = html.replace(scriptSetupRE, (_, script) => {
-    scripts.push(script)
+  const scripts: ScriptMeta[] = []
+  html = html.replace(scriptSetupRE, (_, attr1, attr2, code) => {
+    scripts.push({
+      code,
+      attr: `${attr1} ${attr2}`.trim(),
+    })
     return ''
   })
 
@@ -127,13 +135,34 @@ export function createMarkdown(options: ResolvedOptions) {
         scriptLines.push('defineExpose({ excerpt })')
     }
 
-    scriptLines.push(...hoistScripts.scripts)
+    scriptLines.push(...hoistScripts.scripts.map(i => i.code))
+
+    const attrs = uniq(hoistScripts.scripts.map(i => i.attr)).join(' ')
 
     const scripts = isVue2
-      ? `<script>\n${scriptLines.join('\n')}\n${frontmatterExportsLines.join('\n')}\n${excerptExportsLine}export default { data() { return { frontmatter } } }\n</script>`
-      : `<script setup>\n${scriptLines.join('\n')}\n</script>${frontmatterExportsLines.length ? `\n<script>\n${frontmatterExportsLines.join('\n')}\n</script>` : ''}${excerptExportsLine !== '' ? `\n<script>\n${excerptExportsLine}</script>` : ''}`
+      ? [
+        `<script ${attrs}>`,
+        ...scriptLines,
+        ...frontmatterExportsLines,
+        excerptExportsLine,
+        'export default { data() { return { frontmatter } } }',
+        '</script>',
+        ]
+      : [
+        `<script setup ${attrs}>`,
+        ...scriptLines,
+        '</script>',
+        ...((frontmatterExportsLines.length || excerptExportsLine)
+          ? [
+            `<script ${attrs}>`,
+            ...frontmatterExportsLines,
+            excerptExportsLine,
+            '</script>',
+            ]
+          : []),
+        ]
 
-    const sfc = `<template>${html}</template>\n${scripts}\n${customBlocks.blocks.join('\n')}\n`
+    const sfc = `<template>${html}</template>\n${scripts.join('\n')}\n${customBlocks.blocks.join('\n')}\n`
 
     return sfc
   }
