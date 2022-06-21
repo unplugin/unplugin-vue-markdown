@@ -81,7 +81,7 @@ exports[`transform > script setup 1`] = `
 "<template><div class=\\"markdown-body\\"><h1>Hello</h1>
 
 </div></template>
-<script setup>
+<script setup lang=\\"ts\\">
 const frontmatter = {}
 defineExpose({ frontmatter })
 

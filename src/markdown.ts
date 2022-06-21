@@ -99,6 +99,10 @@ export function createMarkdown(options: ResolvedOptions) {
     let excerptExportsLine = ''
     let excerptKeyOverlapping = false
 
+    function hasExplicitExports() {
+      return defineExposeRE.test(hoistScripts.scripts.map(i => i.code).join(''))
+    }
+
     if (options.frontmatter) {
       if (options.excerpt && data) {
         if (data.excerpt !== undefined)
@@ -115,7 +119,7 @@ export function createMarkdown(options: ResolvedOptions) {
 
       frontmatterExportsLines = Object.entries(frontmatter).map(([key, value]) => `export const ${key} = ${JSON.stringify(value)}`)
 
-      if (!isVue2 && options.exposeFrontmatter && !defineExposeRE.test(hoistScripts.scripts.join('')))
+      if (!isVue2 && options.exposeFrontmatter && !hasExplicitExports())
         scriptLines.push('defineExpose({ frontmatter })')
 
       if (!isVue2 && headEnabled && head) {
@@ -131,17 +135,19 @@ export function createMarkdown(options: ResolvedOptions) {
       if (!excerptKeyOverlapping)
         excerptExportsLine = `export const excerpt = ${JSON.stringify(excerpt)}\n`
 
-      if (!isVue2 && options.exposeExcerpt && !defineExposeRE.test(hoistScripts.scripts.join('')))
+      if (!isVue2 && options.exposeExcerpt && !hasExplicitExports())
         scriptLines.push('defineExpose({ excerpt })')
     }
 
     scriptLines.push(...hoistScripts.scripts.map(i => i.code))
 
-    const attrs = uniq(hoistScripts.scripts.map(i => i.attr)).join(' ')
+    let attrs = uniq(hoistScripts.scripts.map(i => i.attr)).join(' ').trim()
+    if (attrs)
+      attrs = ` ${attrs}`
 
     const scripts = isVue2
       ? [
-        `<script ${attrs}>`,
+        `<script${attrs}>`,
         ...scriptLines,
         ...frontmatterExportsLines,
         excerptExportsLine,
@@ -149,12 +155,12 @@ export function createMarkdown(options: ResolvedOptions) {
         '</script>',
         ]
       : [
-        `<script setup ${attrs}>`,
+        `<script setup${attrs}>`,
         ...scriptLines,
         '</script>',
         ...((frontmatterExportsLines.length || excerptExportsLine)
           ? [
-            `<script ${attrs}>`,
+            `<script${attrs}>`,
             ...frontmatterExportsLines,
             excerptExportsLine,
             '</script>',
@@ -162,7 +168,7 @@ export function createMarkdown(options: ResolvedOptions) {
           : []),
         ]
 
-    const sfc = `<template>${html}</template>\n${scripts.join('\n')}\n${customBlocks.blocks.join('\n')}\n`
+    const sfc = `<template>${html}</template>\n${scripts.filter(Boolean).join('\n')}\n${customBlocks.blocks.join('\n')}\n`
 
     return sfc
   }
