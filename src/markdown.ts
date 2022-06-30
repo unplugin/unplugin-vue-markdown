@@ -1,8 +1,8 @@
 import MarkdownIt from 'markdown-it'
 import matter from 'gray-matter'
 import { toArray, uniq } from '@antfu/utils'
+import { componentPlugin } from '@mdit-vue/plugin-component'
 import type { ResolvedOptions } from './types'
-import { componentPlugin } from './plugins/component'
 
 const scriptSetupRE = /<\s*script([^>]*)\bsetup\b([^>]*)>([\s\S]*)<\/script>/mg
 const defineExposeRE = /defineExpose\s*\(/mg

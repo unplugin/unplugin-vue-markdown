@@ -2,7 +2,7 @@
 
 exports[`transform > Vue directives 1`] = `
 "<template><div class=\\"markdown-body\\">
-<button @click=\\"onClick\\"></button>
+<p><button @click=\\"onClick\\"></button></p>
 </div></template>
 <script setup lang=\\"ts\\">
 const frontmatter = {\\"name\\":\\"My Cool App\\"}

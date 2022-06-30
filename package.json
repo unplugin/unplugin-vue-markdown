@@ -45,6 +45,7 @@
   },
   "dependencies": {
     "@antfu/utils": "^0.5.2",
+    "@mdit-vue/plugin-component": "^0.1.1",
     "@rollup/pluginutils": "^4.2.1",
     "@types/markdown-it": "^12.2.3",
     "gray-matter": "^4.0.3",
