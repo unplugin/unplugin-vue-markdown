@@ -41,7 +41,7 @@
     "release": "bumpp --commit --tag --push && npm publish"
   },
   "peerDependencies": {
-    "vite": "^2.0.0"
+    "vite": "^2.0.0 || ^3.0.0-0"
   },
   "dependencies": {
     "@antfu/utils": "^0.5.2",
