@@ -7,14 +7,15 @@ importers:
       '@antfu/eslint-config': ^0.25.2
       '@antfu/ni': ^0.16.3
       '@antfu/utils': ^0.5.2
-      '@mdit-vue/plugin-component': ^0.1.1
+      '@mdit-vue/plugin-component': ^0.6.0
+      '@mdit-vue/plugin-frontmatter': ^0.6.0
+      '@mdit-vue/types': ^0.6.0
       '@rollup/pluginutils': ^4.2.1
       '@types/markdown-it': ^12.2.3
       '@types/node': ^18.0.0
       '@vue/test-utils': ^2.0.1
       bumpp: ^8.2.1
       eslint: ^8.18.0
-      gray-matter: ^4.0.3
       markdown-it: ^13.0.1
       rollup: ^2.75.7
       tsup: ^6.1.2
@@ -23,10 +24,11 @@ importers:
       vitest: ^0.16.0
     dependencies:
       '@antfu/utils': 0.5.2
-      '@mdit-vue/plugin-component': 0.1.1
+      '@mdit-vue/plugin-component': 0.6.0
+      '@mdit-vue/plugin-frontmatter': 0.6.0
+      '@mdit-vue/types': 0.6.0
       '@rollup/pluginutils': 4.2.1
       '@types/markdown-it': 12.2.3
-      gray-matter: 4.0.3
       markdown-it: 13.0.1
     devDependencies:
       '@antfu/eslint-config': 0.25.2_b5e7v2qnwxfo6hmiq56u52mz3e
@@ -260,11 +262,24 @@ packages:
       type-detect: 4.0.8
     dev: true
 
-  /@mdit-vue/plugin-component/0.1.1:
-    resolution: {integrity: sha512-DC4OEZO737FbvwZxVToO2d9jprbQEs4lor7bylEBrPDYDds8pjRBUIx2BNc54X0effIopsZhq+b4gxkOHJOPNQ==}
+  /@mdit-vue/plugin-component/0.6.0:
+    resolution: {integrity: sha512-S/Dd0eoOipbUAMdJ6A7M20dDizJxbtGAcL6T1iiJ0cEzjTrHP1kRT421+JMGPL8gcdsrIxgVSW8bI/R6laqBtA==}
     dependencies:
       '@types/markdown-it': 12.2.3
       markdown-it: 13.0.1
+    dev: false
+
+  /@mdit-vue/plugin-frontmatter/0.6.0:
+    resolution: {integrity: sha512-cRunxy0q1gcqxUHAAiV8hMKh2qZOTDKXt8YOWfWNtf7IzaAL0v/nCOfh+O7AsHRmyc25Th8sL3H85HKWnNJtdw==}
+    dependencies:
+      '@mdit-vue/types': 0.6.0
+      '@types/markdown-it': 12.2.3
+      gray-matter: 4.0.3
+      markdown-it: 13.0.1
+    dev: false
+
+  /@mdit-vue/types/0.6.0:
+    resolution: {integrity: sha512-2Gf6MkEmoHrvO/IJsz48T+Ns9lW17ReC1vdhtCUGSCv0fFCm/L613uu/hpUrHuT3jTQHP90LcbXTQB2w4L1G8w==}
     dev: false
 
   /@nodelib/fs.scandir/2.1.5:

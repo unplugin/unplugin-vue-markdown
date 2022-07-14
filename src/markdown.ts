@@ -1,8 +1,8 @@
 import MarkdownIt from 'markdown-it'
-import matter from 'gray-matter'
 import { toArray, uniq } from '@antfu/utils'
 import { componentPlugin } from '@mdit-vue/plugin-component'
-import type { ResolvedOptions } from './types'
+import { frontmatterPlugin } from '@mdit-vue/plugin-frontmatter'
+import type { MarkdownEnv, ResolvedOptions } from './types'
 
 const scriptSetupRE = /<\s*script([^>]*)\bsetup\b([^>]*)>([\s\S]*)<\/script>/mg
 const defineExposeRE = /defineExpose\s*\(/mg
@@ -49,6 +49,16 @@ export function createMarkdown(options: ResolvedOptions) {
 
   markdown.use(componentPlugin)
 
+  if (options.frontmatter || options.excerpt) {
+    markdown.use(frontmatterPlugin, {
+      renderExcerpt: false,
+      grayMatterOptions: {
+        excerpt: options.excerpt,
+        ...options.grayMatterOptions,
+      },
+    })
+  }
+
   markdown.linkify.set({ fuzzyLink: false })
 
   options.markdownItUses.forEach((e) => {
@@ -67,16 +77,9 @@ export function createMarkdown(options: ResolvedOptions) {
     if (transforms.before)
       raw = transforms.before(raw, id)
 
-    if (options.excerpt && !options.grayMatterOptions.excerpt)
-      options.grayMatterOptions.excerpt = true
-
-    const grayMatterFile = options.frontmatter
-      ? matter(raw, options.grayMatterOptions)
-      : { content: raw, data: null, excerpt: '' }
-    const { content: md, data } = grayMatterFile
-    const excerpt = grayMatterFile.excerpt === undefined ? '' : grayMatterFile.excerpt
-
-    let html = markdown.render(md, { id })
+    const env: MarkdownEnv = { id }
+    let html = markdown.render(raw, env)
+    const { excerpt = '', frontmatter: data = null } = env
 
     if (wrapperClasses)
       html = `<div class="${wrapperClasses}">${html}</div>`
