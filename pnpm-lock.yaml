@@ -7,9 +7,9 @@ importers:
       '@antfu/eslint-config': ^0.25.2
       '@antfu/ni': ^0.16.3
       '@antfu/utils': ^0.5.2
-      '@mdit-vue/plugin-component': ^0.7.0
-      '@mdit-vue/plugin-frontmatter': ^0.7.0
-      '@mdit-vue/types': ^0.7.0
+      '@mdit-vue/plugin-component': ^0.7.1
+      '@mdit-vue/plugin-frontmatter': ^0.7.1
+      '@mdit-vue/types': ^0.7.1
       '@rollup/pluginutils': ^4.2.1
       '@types/markdown-it': ^12.2.3
       '@types/node': ^18.0.0
@@ -24,9 +24,9 @@ importers:
       vitest: ^0.16.0
     dependencies:
       '@antfu/utils': 0.5.2
-      '@mdit-vue/plugin-component': 0.7.0
-      '@mdit-vue/plugin-frontmatter': 0.7.0
-      '@mdit-vue/types': 0.7.0
+      '@mdit-vue/plugin-component': 0.7.1
+      '@mdit-vue/plugin-frontmatter': 0.7.1
+      '@mdit-vue/types': 0.7.1
       '@rollup/pluginutils': 4.2.1
       '@types/markdown-it': 12.2.3
       markdown-it: 13.0.1
@@ -262,24 +262,24 @@ packages:
       type-detect: 4.0.8
     dev: true
 
-  /@mdit-vue/plugin-component/0.7.0:
-    resolution: {integrity: sha512-XKH99MRI2mkwTsKVKjrs8i/r4LGTrdX8p80aaH3gE42erlRTu41DOWJZ57HP4TQhSsENhY01DUS+rJlKcnWKfQ==}
+  /@mdit-vue/plugin-component/0.7.1:
+    resolution: {integrity: sha512-KkPgrZeNeRenfnFe8aNnE48IQ4rBHCaICQfzsjkRB4RlHce4lfCM5aG2Q+ct1/iJEzBr5uRhpPQMYwSEwv/k1Q==}
     dependencies:
       '@types/markdown-it': 12.2.3
       markdown-it: 13.0.1
     dev: false
 
-  /@mdit-vue/plugin-frontmatter/0.7.0:
-    resolution: {integrity: sha512-L7VOyilYkHM8lX/de0I3huXPvo6FpQnsM9irHloCjxFjGWjQGQPVgKwlmuUiEnoszP91bGOcFazRUuESonZIxg==}
+  /@mdit-vue/plugin-frontmatter/0.7.1:
+    resolution: {integrity: sha512-4IdmU1UNnvJw3DcQVJFDPfUHb/k/VcMGKAINZ+DXJ6R2zP3eN92SrgR9zwIY0flKgRwXS4CQoiKJSd+0dvyU2A==}
     dependencies:
-      '@mdit-vue/types': 0.7.0
+      '@mdit-vue/types': 0.7.1
       '@types/markdown-it': 12.2.3
       gray-matter: 4.0.3
       markdown-it: 13.0.1
     dev: false
 
-  /@mdit-vue/types/0.7.0:
-    resolution: {integrity: sha512-9OlHbqAtKFvQ8lxeXEcLpwVQMZnlVAzSmSQ4OtlWPGGLnSUFNDQufR06laS4jBu1oWILxt4/sSkzJdfkCTEMKg==}
+  /@mdit-vue/types/0.7.1:
+    resolution: {integrity: sha512-3+JKRgCcrGDZsfikjkR5jXw0aPh6rYM9s9pwUhv6WwoHdU71za+TLXGQkb3wV/0vvxHFlkQRalXeINZZ1Q33GA==}
     dev: false
 
   /@nodelib/fs.scandir/2.1.5:
