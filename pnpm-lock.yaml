@@ -7,14 +7,15 @@ importers:
       '@antfu/eslint-config': ^0.25.2
       '@antfu/ni': ^0.16.3
       '@antfu/utils': ^0.5.2
-      '@mdit-vue/plugin-component': ^0.1.1
+      '@mdit-vue/plugin-component': ^0.7.1
+      '@mdit-vue/plugin-frontmatter': ^0.7.1
+      '@mdit-vue/types': ^0.7.1
       '@rollup/pluginutils': ^4.2.1
       '@types/markdown-it': ^12.2.3
       '@types/node': ^18.0.0
       '@vue/test-utils': ^2.0.1
       bumpp: ^8.2.1
       eslint: ^8.18.0
-      gray-matter: ^4.0.3
       markdown-it: ^13.0.1
       rollup: ^2.75.7
       tsup: ^6.1.2
@@ -23,10 +24,11 @@ importers:
       vitest: ^0.16.0
     dependencies:
       '@antfu/utils': 0.5.2
-      '@mdit-vue/plugin-component': 0.1.1
+      '@mdit-vue/plugin-component': 0.7.1
+      '@mdit-vue/plugin-frontmatter': 0.7.1
+      '@mdit-vue/types': 0.7.1
       '@rollup/pluginutils': 4.2.1
       '@types/markdown-it': 12.2.3
-      gray-matter: 4.0.3
       markdown-it: 13.0.1
     devDependencies:
       '@antfu/eslint-config': 0.25.2_b5e7v2qnwxfo6hmiq56u52mz3e
@@ -260,11 +262,24 @@ packages:
       type-detect: 4.0.8
     dev: true
 
-  /@mdit-vue/plugin-component/0.1.1:
-    resolution: {integrity: sha512-DC4OEZO737FbvwZxVToO2d9jprbQEs4lor7bylEBrPDYDds8pjRBUIx2BNc54X0effIopsZhq+b4gxkOHJOPNQ==}
+  /@mdit-vue/plugin-component/0.7.1:
+    resolution: {integrity: sha512-KkPgrZeNeRenfnFe8aNnE48IQ4rBHCaICQfzsjkRB4RlHce4lfCM5aG2Q+ct1/iJEzBr5uRhpPQMYwSEwv/k1Q==}
     dependencies:
       '@types/markdown-it': 12.2.3
       markdown-it: 13.0.1
+    dev: false
+
+  /@mdit-vue/plugin-frontmatter/0.7.1:
+    resolution: {integrity: sha512-4IdmU1UNnvJw3DcQVJFDPfUHb/k/VcMGKAINZ+DXJ6R2zP3eN92SrgR9zwIY0flKgRwXS4CQoiKJSd+0dvyU2A==}
+    dependencies:
+      '@mdit-vue/types': 0.7.1
+      '@types/markdown-it': 12.2.3
+      gray-matter: 4.0.3
+      markdown-it: 13.0.1
+    dev: false
+
+  /@mdit-vue/types/0.7.1:
+    resolution: {integrity: sha512-3+JKRgCcrGDZsfikjkR5jXw0aPh6rYM9s9pwUhv6WwoHdU71za+TLXGQkb3wV/0vvxHFlkQRalXeINZZ1Q33GA==}
     dev: false
 
   /@nodelib/fs.scandir/2.1.5:
@@ -1929,7 +1944,7 @@ packages:
     dev: true
 
   /extend-shallow/2.0.1:
-    resolution: {integrity: sha1-Ua99YUrZqfYQ6huvu5idaxxWiQ8=}
+    resolution: {integrity: sha512-zCnTtlxNoAiDc3gqY2aYAWFx7XWWiasuF2K8Me5WbN8otHKTUKBwjPtNpRs/rbUZm7KxWAaNj7P1a/p52GbVug==}
     engines: {node: '>=0.10.0'}
     dependencies:
       is-extendable: 0.1.1
@@ -2315,7 +2330,7 @@ packages:
     dev: true
 
   /is-extendable/0.1.1:
-    resolution: {integrity: sha1-YrEQ4omkcUGOPsNqYX1HLjAd/Ik=}
+    resolution: {integrity: sha512-5BMULNob1vgFX6EjQw5izWDxrecWK9AM72rugNr0TFldMOi0fj6Jk+zeKIt0xGj4cEfQIJth4w3OKWOJ4f+AFw==}
     engines: {node: '>=0.10.0'}
     dev: false
 
@@ -3234,7 +3249,7 @@ packages:
     dev: true
 
   /sprintf-js/1.0.3:
-    resolution: {integrity: sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=}
+    resolution: {integrity: sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==}
     dev: false
 
   /string-argv/0.3.1:
@@ -3279,7 +3294,7 @@ packages:
     dev: true
 
   /strip-bom-string/1.0.0:
-    resolution: {integrity: sha1-5SEekiQ2n7uB1jOi8ABE3IztrZI=}
+    resolution: {integrity: sha512-uCC2VHvQRYu+lMh4My/sFNmF2klFymLX1wHJeXnbEJERpV/ZsVuonzerjfrGpIGF7LBVa1O7i9kjiWvJiFck8g==}
     engines: {node: '>=0.10.0'}
     dev: false
 

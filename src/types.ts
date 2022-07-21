@@ -1,4 +1,6 @@
 import type MarkdownIt from 'markdown-it'
+import type { FrontmatterPluginOptions } from '@mdit-vue/plugin-frontmatter'
+import type { MarkdownItEnv } from '@mdit-vue/types'
 import type { FilterPattern } from '@rollup/pluginutils'
 
 /** a `<meta />` property in HTML is defined with the following name/values */
@@ -34,51 +36,6 @@ export interface Frontmatter {
   description?: string
   meta?: MetaProperty[]
   [key: string]: unknown
-}
-
-/**
- * Options for Graymatter parser [[Docs](https://github.com/jonschlinkert/gray-matter#options)]
- */
-export interface GraymatterOptions {
-  /**
-   * Extract an excerpt that directly follows front-matter, or is the
-   * first thing in the string if no front-matter exists.
-   *
-   * If set to excerpt: true, it will look for the frontmatter delimiter,
-   * --- by default and grab everything leading up to it.
-   *
-   * You can also set excerpt to a function. This function uses the 'file'
-   * and 'options' that were initially passed to gray-matter as parameters,
-   * so you can control how the excerpt is extracted from the content.
-   */
-  excerpt?: boolean | (() => string)
-
-  /**
-   * Define a custom separator to use for excerpts.
-   */
-  excerpt_separator?: string
-
-  /**
-   * Define custom engines for parsing and/or stringifying front-matter.
-   *
-   * Engines may either be an object with `parse` and (optionally) stringify
-   * methods, or a function that will be used for parsing only.
-   */
-  engines?: Record<string, () => any>
-
-  /**
-   * Define the engine to use for parsing front-matter.
-   *
-   * ```ts
-   * { language: 'toml' }
-   * ```
-   */
-  language?: string
-
-  /**
-   * Open and close delimiters can be passed in as an array of strings.
-   */
-  delimiters?: string | [string, string]
 }
 
 export interface Options {
@@ -189,7 +146,7 @@ export interface Options {
   /**
    * Options passed to [gray-matter](https://github.com/jonschlinkert/gray-matter#options)
    */
-  grayMatterOptions?: GraymatterOptions
+  grayMatterOptions?: FrontmatterPluginOptions['grayMatterOptions']
 
   /**
    * Class names for wrapper div
@@ -219,4 +176,8 @@ export interface Options {
 
 export interface ResolvedOptions extends Required<Options> {
   wrapperClasses: string
+}
+
+export interface MarkdownEnv extends MarkdownItEnv {
+  id: string
 }
