@@ -1,4 +1,5 @@
 import type MarkdownIt from 'markdown-it'
+import type { ComponentPluginOptions } from '@mdit-vue/plugin-component'
 import type { FrontmatterPluginOptions } from '@mdit-vue/plugin-frontmatter'
 import type { MarkdownItEnv } from '@mdit-vue/types'
 import type { FilterPattern } from '@rollup/pluginutils'
@@ -84,6 +85,11 @@ export interface Options {
    * @default ['route', 'i18n']
    */
   customSfcBlocks?: string[]
+
+  /**
+   * Options passed to [@mdit-vue/plugin-component](https://github.com/mdit-vue/mdit-vue/tree/main/packages/plugin-component)
+   */
+  componentOptions?: ComponentPluginOptions
 
   /**
    * Custom function to provide defaults to the frontmatter and

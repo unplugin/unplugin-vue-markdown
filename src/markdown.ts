@@ -47,7 +47,7 @@ export function createMarkdown(options: ResolvedOptions) {
     ...options.markdownItOptions,
   })
 
-  markdown.use(componentPlugin)
+  markdown.use(componentPlugin, options.componentOptions)
 
   if (options.frontmatter || options.excerpt) {
     markdown.use(frontmatterPlugin, {

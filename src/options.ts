@@ -15,6 +15,7 @@ export function resolveOptions(userOptions: Options): ResolvedOptions {
     exposeExcerpt: false,
     escapeCodeTagInterpolation: true,
     customSfcBlocks: ['route', 'i18n', 'style'],
+    componentOptions: {},
     markdownItOptions: {},
     markdownItUses: [],
     markdownItSetup: () => {},
