@@ -7,7 +7,7 @@ importers:
       '@antfu/eslint-config': ^0.25.2
       '@antfu/ni': ^0.16.3
       '@antfu/utils': ^0.5.2
-      '@mdit-vue/plugin-component': ^0.8.0
+      '@mdit-vue/plugin-component': ^0.8.1
       '@mdit-vue/plugin-frontmatter': ^0.8.0
       '@mdit-vue/types': ^0.8.0
       '@rollup/pluginutils': ^4.2.1
@@ -24,7 +24,7 @@ importers:
       vitest: ^0.16.0
     dependencies:
       '@antfu/utils': 0.5.2
-      '@mdit-vue/plugin-component': 0.8.0
+      '@mdit-vue/plugin-component': 0.8.1
       '@mdit-vue/plugin-frontmatter': 0.8.0
       '@mdit-vue/types': 0.8.0
       '@rollup/pluginutils': 4.2.1
@@ -262,8 +262,8 @@ packages:
       type-detect: 4.0.8
     dev: true
 
-  /@mdit-vue/plugin-component/0.8.0:
-    resolution: {integrity: sha512-dBYN6L/rd95EdfBQZHpd2kcKnvg8Kk/ivSTCGSIXKSeMOf31MhamWBKl+Nayv0LCbkhPkdXzHqHkUo8OAQp0FA==}
+  /@mdit-vue/plugin-component/0.8.1:
+    resolution: {integrity: sha512-lBkVDc4/uq93CDKBUbKZ25lpBwZ4fghHaBMV956Eb/Qp7isHzqn31qpdJT6S7nPNltt9clkWTVZeZRL7hmRKUw==}
     dependencies:
       '@types/markdown-it': 12.2.3
       markdown-it: 13.0.1

@@ -45,7 +45,7 @@
   },
   "dependencies": {
     "@antfu/utils": "^0.5.2",
-    "@mdit-vue/plugin-component": "^0.8.0",
+    "@mdit-vue/plugin-component": "^0.8.1",
     "@mdit-vue/plugin-frontmatter": "^0.8.0",
     "@mdit-vue/types": "^0.8.0",
     "@rollup/pluginutils": "^4.2.1",
