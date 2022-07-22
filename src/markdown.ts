@@ -51,10 +51,10 @@ export function createMarkdown(options: ResolvedOptions) {
 
   if (options.frontmatter || options.excerpt) {
     markdown.use(frontmatterPlugin, {
-      renderExcerpt: false,
+      ...options.frontmatterOptions,
       grayMatterOptions: {
         excerpt: options.excerpt,
-        ...options.grayMatterOptions,
+        ...options.frontmatterOptions.grayMatterOptions,
       },
     })
   }
