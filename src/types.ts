@@ -92,6 +92,11 @@ export interface Options {
   componentOptions?: ComponentPluginOptions
 
   /**
+   * Options passed to [@mdit-vue/plugin-frontmatter](https://github.com/mdit-vue/mdit-vue/tree/main/packages/plugin-frontmatter)
+   */
+  frontmatterOptions?: FrontmatterPluginOptions
+
+  /**
    * Custom function to provide defaults to the frontmatter and
    * move certain attributes into the "meta" category.
    *
@@ -148,11 +153,6 @@ export interface Options {
    * settings/plugins
    */
   markdownItSetup?: (MarkdownIt: MarkdownIt) => void
-
-  /**
-   * Options passed to [gray-matter](https://github.com/jonschlinkert/gray-matter#options)
-   */
-  grayMatterOptions?: FrontmatterPluginOptions['grayMatterOptions']
 
   /**
    * Class names for wrapper div
