@@ -32,7 +32,7 @@ function VitePluginMarkdown(userOptions: Options = {}): Plugin {
 
       const defaultRead = ctx.read
       ctx.read = async function () {
-        return markdownToVue(ctx.file, await defaultRead())
+        return markdownToVue(ctx.file, await defaultRead()).code
       }
     },
   }

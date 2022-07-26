@@ -2,6 +2,7 @@ import MarkdownIt from 'markdown-it'
 import { toArray, uniq } from '@antfu/utils'
 import { componentPlugin } from '@mdit-vue/plugin-component'
 import { frontmatterPlugin } from '@mdit-vue/plugin-frontmatter'
+import type { TransformResult } from 'vite'
 import type { MarkdownEnv, ResolvedOptions } from './types'
 
 const scriptSetupRE = /<\s*script([^>]*)\bsetup\b([^>]*)>([\s\S]*)<\/script>/mg
@@ -69,7 +70,7 @@ export function createMarkdown(options: ResolvedOptions) {
 
   options.markdownItSetup(markdown)
 
-  return (id: string, raw: string) => {
+  return (id: string, raw: string): TransformResult => {
     const { wrapperClasses, wrapperComponent, transforms, headEnabled, frontmatterPreprocess } = options
 
     raw = raw.trimStart()
@@ -174,10 +175,15 @@ export function createMarkdown(options: ResolvedOptions) {
           : []),
         ]
 
-    return [
+    const code = [
       `<template>${html}</template>`,
       ...scripts.map(i => i.trim()).filter(Boolean),
       ...customBlocks.blocks,
     ].join('\n')
+
+    return {
+      code,
+      map: { mappings: '' } as any,
+    }
   }
 }

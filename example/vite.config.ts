@@ -1,11 +1,11 @@
-import type { UserConfig } from 'vite'
+import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import Markdown from 'vite-plugin-vue-markdown'
 import prism from 'markdown-it-prism'
 import Pages from 'vite-plugin-pages'
 import Inspect from 'vite-plugin-inspect'
 
-const config: UserConfig = {
+export default defineConfig({
   plugins: [
     Vue({
       include: [/\.vue$/, /\.md$/],
@@ -22,6 +22,7 @@ const config: UserConfig = {
     }),
     Inspect(),
   ],
-}
-
-export default config
+  build: {
+    sourcemap: true,
+  },
+})

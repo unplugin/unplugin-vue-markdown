@@ -14,6 +14,7 @@ importers:
       '@types/markdown-it': ^12.2.3
       '@types/node': ^18.6.1
       '@vue/test-utils': ^2.0.2
+      '@vueuse/head': ^0.7.7
       bumpp: ^8.2.1
       eslint: ^8.20.0
       markdown-it: ^13.0.1
@@ -22,6 +23,7 @@ importers:
       typescript: ^4.7.4
       vite: ^3.0.3
       vitest: ^0.19.1
+      vue: ^3.2.37
     dependencies:
       '@antfu/utils': 0.5.2
       '@mdit-vue/plugin-component': 0.8.1
@@ -34,7 +36,8 @@ importers:
       '@antfu/eslint-config': 0.25.2_he2ccbldppg44uulnyq4rwocfa
       '@antfu/ni': 0.17.2
       '@types/node': 18.6.1
-      '@vue/test-utils': 2.0.2
+      '@vue/test-utils': 2.0.2_vue@3.2.37
+      '@vueuse/head': 0.7.7_vue@3.2.37
       bumpp: 8.2.1
       eslint: 8.20.0
       rollup: 2.77.0
@@ -42,11 +45,11 @@ importers:
       typescript: 4.7.4
       vite: 3.0.3
       vitest: 0.19.1
+      vue: 3.2.37
 
   example:
     specifiers:
       '@vitejs/plugin-vue': ^3.0.1
-      '@vue/compiler-sfc': ^3.2.37
       '@vueuse/head': ^0.7.7
       cross-env: ^7.0.3
       markdown-it-prism: ^2.2.4
@@ -64,14 +67,13 @@ importers:
       vue-router: 4.1.2_vue@3.2.37
     devDependencies:
       '@vitejs/plugin-vue': 3.0.1_vite@3.0.3+vue@3.2.37
-      '@vue/compiler-sfc': 3.2.37
       cross-env: 7.0.3
       markdown-it-prism: 2.2.4
       prismjs: 1.28.0
       typescript: 4.7.4
       vite: 3.0.3
       vite-plugin-inspect: 0.6.0_vite@3.0.3
-      vite-plugin-pages: 0.25.0_fvfvl6jo25l4byabogbrrdvuya
+      vite-plugin-pages: 0.25.0_vite@3.0.3
       vite-plugin-vue-markdown: link:..
 
 packages:
@@ -589,10 +591,12 @@ packages:
   /@vue/shared/3.2.37:
     resolution: {integrity: sha512-4rSJemR2NQIo9Klm1vabqWjD8rs/ZaJSzMxkMNeJS6lHiUjjUeYFbooN19NgFjztubEKh3WlZUeOLVdbbUWHsw==}
 
-  /@vue/test-utils/2.0.2:
+  /@vue/test-utils/2.0.2_vue@3.2.37:
     resolution: {integrity: sha512-E2P4oXSaWDqTZNbmKZFVLrNN/siVN78YkEqs7pHryWerrlZR9bBFLWdJwRoguX45Ru6HxIflzKl4vQvwRMwm5g==}
     peerDependencies:
       vue: ^3.0.1
+    dependencies:
+      vue: 3.2.37
     dev: true
 
   /@vueuse/head/0.7.7_vue@3.2.37:
@@ -601,7 +605,6 @@ packages:
       vue: '>=3'
     dependencies:
       vue: 3.2.37
-    dev: false
 
   /acorn-jsx/5.3.2_acorn@8.7.1:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
@@ -3364,7 +3367,7 @@ packages:
       - supports-color
     dev: true
 
-  /vite-plugin-pages/0.25.0_fvfvl6jo25l4byabogbrrdvuya:
+  /vite-plugin-pages/0.25.0_vite@3.0.3:
     resolution: {integrity: sha512-q0SX2iSw0UrTnivkzsPb19ZxamShq1nE/e/CKOe8+uVg70/e14uJuzKnw7dZ2omPjmV9Lhks38nzJL6RDRGmeA==}
     peerDependencies:
       '@vue/compiler-sfc': ^2.7.0 || ^3.0.0
@@ -3374,7 +3377,6 @@ packages:
         optional: true
     dependencies:
       '@types/debug': 4.1.7
-      '@vue/compiler-sfc': 3.2.37
       debug: 4.3.4
       deep-equal: 2.0.5
       extract-comments: 1.1.0
