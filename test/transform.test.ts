@@ -17,7 +17,7 @@ title: Hey
 - B
 - C
 `
-    expect(markdownToVue('', md)).toMatchSnapshot()
+    expect(markdownToVue('', md).code).toMatchSnapshot()
   })
 
   it('style', () => {
@@ -26,7 +26,7 @@ title: Hey
 
 <style>h1 { color: red }</style>
 `
-    expect(markdownToVue('', md)).toMatchSnapshot()
+    expect(markdownToVue('', md).code).toMatchSnapshot()
   })
 
   it('script setup', () => {
@@ -37,7 +37,7 @@ title: Hey
 import Foo from './Foo.vue'
 </script>
 `
-    expect(markdownToVue('', md)).toMatchSnapshot()
+    expect(markdownToVue('', md).code).toMatchSnapshot()
   })
 
   it('exposes frontmatter', () => {
@@ -46,7 +46,7 @@ title: Hey
 ---
 
 # Hello`
-    expect(markdownToVue('', md)).toMatchSnapshot()
+    expect(markdownToVue('', md).code).toMatchSnapshot()
   })
 
   it('couldn\'t expose frontmatter', () => {
@@ -58,7 +58,7 @@ title: Hey
 defineExpose({ test: 'test'})
 </script>
 `
-    expect(markdownToVue('', md)).toMatchSnapshot()
+    expect(markdownToVue('', md).code).toMatchSnapshot()
   })
 
   it('escapeCodeTagInterpolation', () => {
@@ -69,7 +69,7 @@ defineExpose({ test: 'test'})
 <div>{{hello}}</div>
 \`\`\`
 `
-    expect(markdownToVue('', md)).toMatchSnapshot()
+    expect(markdownToVue('', md).code).toMatchSnapshot()
   })
 
   it('frontmatter interpolation', () => {
@@ -82,7 +82,7 @@ name: 'My Cool App'
 
 This is {{frontmatter.name}}
 `
-    expect(markdownToVue('', md)).toMatchSnapshot()
+    expect(markdownToVue('', md).code).toMatchSnapshot()
   })
 
   it('Vue directives', () => {
@@ -99,6 +99,6 @@ function onClick() {
 
 <button @click="onClick"></button>
 `
-    expect(markdownToVue('', md)).toMatchSnapshot()
+    expect(markdownToVue('', md).code).toMatchSnapshot()
   })
 })

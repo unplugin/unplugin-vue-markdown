@@ -28,7 +28,7 @@ const frontmatterPreprocess: ResolvedOptions['frontmatterPreprocess'] = (fm) => 
 describe('provide bespoke frontmatter processor', () => {
   it('inline markdown is used over default properties', async () => {
     const parser = createMarkdown(resolveOptions({ frontmatterPreprocess }))
-    const md = parser('', await readFile('test/fixtures/simple.md', 'utf-8'))
+    const md = parser('', await readFile('test/fixtures/simple.md', 'utf-8')).code
     // Positive tests
     expect(
       md.includes('Hello World'),

@@ -27,7 +27,7 @@ This is an excerpt which has been rendered to **HTML**.
 - A
 - B
 - C`
-    expect(markdownToVue('', md)).toMatchSnapshot()
+    expect(markdownToVue('', md).code).toMatchSnapshot()
   })
 
   it('raw excerpt', () => {
@@ -55,6 +55,6 @@ This is an excerpt which is kept as **raw Markdown**.
 - A
 - B
 - C`
-    expect(markdownToVue('', md)).toMatchSnapshot()
+    expect(markdownToVue('', md).code).toMatchSnapshot()
   })
 })
