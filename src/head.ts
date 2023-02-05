@@ -16,7 +16,7 @@ export function preprocessHead<T extends Frontmatter>(frontmatter: T, options: R
     return frontmatter
 
   const head: Frontmatter = options.headField
-    ? (frontmatter[options.headField] as Frontmatter) || {}
+    ? (frontmatter[options.headField] as Frontmatter || {})
     : frontmatter
 
   const meta = (head.meta = head.meta || []) as MetaProperty[]
