@@ -4,6 +4,7 @@ import { componentPlugin } from '@mdit-vue/plugin-component'
 import { frontmatterPlugin } from '@mdit-vue/plugin-frontmatter'
 import type { TransformResult } from 'vite'
 import type { MarkdownEnv, ResolvedOptions } from './types'
+import { preprocessHead } from './head'
 
 const scriptSetupRE = /<\s*script([^>]*)\bsetup\b([^>]*)>([\s\S]*)<\/script>/mg
 const defineExposeRE = /defineExpose\s*\(/mg
@@ -117,7 +118,7 @@ export function createMarkdown(options: ResolvedOptions) {
         data.excerpt = excerpt
       }
 
-      const { head, frontmatter } = frontmatterPreprocess(data || {}, options)
+      const { head, frontmatter } = frontmatterPreprocess(data || {}, options, preprocessHead)
 
       if (options.excerpt && !excerptKeyOverlapping && frontmatter.excerpt !== undefined)
         delete frontmatter.excerpt

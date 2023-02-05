@@ -1,10 +1,9 @@
 import { toArray } from '@antfu/utils'
-import { preprocessHead } from './head'
-import type { Frontmatter, Options, ResolvedOptions } from './types'
+import type { Options, ResolvedOptions } from './types'
 import { getVueVersion } from './utils'
 
 export function resolveOptions(userOptions: Options): ResolvedOptions {
-  const defaultOptions: Omit<ResolvedOptions, 'frontmatterPreprocess'> = {
+  const defaultOptions: ResolvedOptions = {
     headEnabled: false,
     headField: '',
     frontmatter: true,
@@ -24,17 +23,18 @@ export function resolveOptions(userOptions: Options): ResolvedOptions {
     wrapperClasses: 'markdown-body',
     include: null,
     exclude: null,
-  }
-  const options = userOptions.frontmatterPreprocess
-    ? { ...defaultOptions, ...userOptions }
-    : {
-        ...defaultOptions,
-        ...userOptions,
-        frontmatterPreprocess: (frontmatter: Frontmatter, options: ResolvedOptions) => {
-          const head = preprocessHead(frontmatter, options)
-          return { head, frontmatter }
-        },
+    frontmatterPreprocess: (frontmatter, options, defaults) => {
+      return {
+        head: defaults(frontmatter, options),
+        frontmatter,
       }
+    },
+  }
+
+  const options = {
+    ...defaultOptions,
+    ...userOptions,
+  }
 
   options.wrapperClasses = toArray(options.wrapperClasses)
     .filter((i?: string) => i)

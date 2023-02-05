@@ -3,6 +3,7 @@ import type { ComponentPluginOptions } from '@mdit-vue/plugin-component'
 import type { FrontmatterPluginOptions } from '@mdit-vue/plugin-frontmatter'
 import type { MarkdownItEnv } from '@mdit-vue/types'
 import type { FilterPattern } from '@rollup/pluginutils'
+import type { preprocessHead } from './head'
 
 /** a `<meta />` property in HTML is defined with the following name/values */
 export interface MetaProperty {
@@ -106,7 +107,8 @@ export interface Options {
    */
   frontmatterPreprocess?: (
     frontmatter: Frontmatter,
-    options: ResolvedOptions
+    options: ResolvedOptions,
+    defaultHeadProcess: typeof preprocessHead,
   ) => {
     head: Record<string, any>
     frontmatter: Frontmatter
