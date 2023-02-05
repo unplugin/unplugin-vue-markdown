@@ -118,7 +118,7 @@ export function createMarkdown(options: ResolvedOptions) {
         data.excerpt = excerpt
       }
 
-      const { head, frontmatter } = frontmatterPreprocess(data || {}, options, preprocessHead)
+      const { head, frontmatter } = frontmatterPreprocess(data || {}, options, id, preprocessHead)
 
       if (options.excerpt && !excerptKeyOverlapping && frontmatter.excerpt !== undefined)
         delete frontmatter.excerpt

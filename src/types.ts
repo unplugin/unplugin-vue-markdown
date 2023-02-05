@@ -108,6 +108,7 @@ export interface Options {
   frontmatterPreprocess?: (
     frontmatter: Frontmatter,
     options: ResolvedOptions,
+    id: string,
     defaultHeadProcess: typeof preprocessHead,
   ) => {
     head: Record<string, any>

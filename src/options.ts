@@ -23,7 +23,7 @@ export function resolveOptions(userOptions: Options): ResolvedOptions {
     wrapperClasses: 'markdown-body',
     include: null,
     exclude: null,
-    frontmatterPreprocess: (frontmatter, options, defaults) => {
+    frontmatterPreprocess: (frontmatter, options, _id, defaults) => {
       return {
         head: defaults(frontmatter, options),
         frontmatter,
