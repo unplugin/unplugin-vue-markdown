@@ -1,4 +1,4 @@
-import { readFile } from 'fs/promises'
+import { readFile } from 'node:fs/promises'
 import { describe, expect, it } from 'vitest'
 import { createMarkdown } from '../src/markdown'
 import { resolveOptions } from '../src/options'
