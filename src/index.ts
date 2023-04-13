@@ -9,7 +9,7 @@ function VitePluginMarkdown(userOptions: Options = {}): Plugin {
   const markdownToVue = createMarkdown(options)
 
   const filter = createFilter(
-    userOptions.include || /\.md$/,
+    userOptions.include || /\.md(\?.+)?$/,
     userOptions.exclude,
   )
 
