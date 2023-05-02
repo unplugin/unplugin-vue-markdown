@@ -89,7 +89,7 @@ Or you can use [`vite-plugin-components`](#work-with-vite-plugin-components) for
 
 ## Frontmatter
 
-Frontmatter will be parsed and inject into Vue's instance data `frontmatter` field. 
+Frontmatter will be parsed and inject into Vue's instance data `frontmatter` field.
 
 For example:
 
@@ -114,10 +114,10 @@ It will also be passed to the wrapper component's props if you have set `wrapper
 
 ## Document head and meta
 
-To manage document head and meta, you would need to install [`@vueuse/head`](https://github.com/vueuse/head) and do some setup.
+To manage document head and meta, you would need to install [`@unhead/vue`](https://unhead.harlanzw.com/integrations/vue/setup) and do some setup.
 
 ```bash
-npm i @vueuse/head
+npm i @unhead/vue
 ```
 
 ```js
@@ -140,7 +140,7 @@ export default {
 ```js
 // src/main.js
 import { createApp } from 'vue'
-import { createHead } from '@vueuse/head' // <--
+import { createHead } from '@unhead/vue' // <--
 
 const app = createApp(App)
 
@@ -159,7 +159,7 @@ meta:
 ---
 ```
 
-For more options available, please refer to [`@vueuse/head`'s docs](https://github.com/vueuse/head).
+For more options available, please refer to [`@unhead/vue`'s docs](https://unhead.harlanzw.com/integrations/vue/setup).
 
 ## Options
 

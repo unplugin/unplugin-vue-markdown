@@ -5,7 +5,7 @@
     "build": "cross-env DEBUG=vite-plugin-vue-markdown:* vite build"
   },
   "dependencies": {
-    "@vueuse/head": "^1.0.24",
+    "@unhead/vue": "^1.1.26",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6"
   },

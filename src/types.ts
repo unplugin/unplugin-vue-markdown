@@ -49,14 +49,14 @@ export interface Options {
   vueVersion?: string
 
   /**
-   * Enable head support, need to install @vueuse/head and register to App in main.js
+   * Enable head support, need to install @unhead/vue and register to App in main.js
    *
    * @default false
    */
   headEnabled?: boolean
 
   /**
-   * The head field in frontmatter used to be used for @vueuse/head
+   * The head field in frontmatter used to be used for @unhead/vue
    *
    * When an empty string is passed, it will use the root properties of the frontmatter
    *

@@ -1,4 +1,4 @@
-// Vitest Snapshot v1
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`excerpt > raw excerpt 1`] = `
 "<template><div class=\\"markdown-body\\"><p>This is an excerpt which is kept as <strong>raw Markdown</strong>.</p>
