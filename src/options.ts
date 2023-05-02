@@ -1,6 +1,6 @@
 import { toArray } from '@antfu/utils'
 import type { Options, ResolvedOptions } from './types'
-import { getVueVersion } from './utils'
+import { getVueVersion, isUnheadVueInstalled } from './utils'
 
 export function resolveOptions(userOptions: Options): ResolvedOptions {
   const defaultOptions: ResolvedOptions = {
@@ -35,6 +35,9 @@ export function resolveOptions(userOptions: Options): ResolvedOptions {
     ...defaultOptions,
     ...userOptions,
   }
+
+  if (options.headEnabled === true)
+    options.headEnabled = isUnheadVueInstalled() ? 'unhead' : 'vueuse'
 
   options.wrapperClasses = toArray(options.wrapperClasses)
     .filter((i?: string) => i)

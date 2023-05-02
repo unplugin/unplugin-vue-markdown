@@ -132,7 +132,8 @@ export function createMarkdown(options: ResolvedOptions) {
 
       if (!isVue2 && headEnabled && head) {
         scriptLines.push(`const head = ${JSON.stringify(head)}`)
-        scriptLines.unshift('import { useHead } from "@unhead/vue"')
+        const importFrom = headEnabled === 'unhead' ? '@unhead/vue' : '@vueuse/head'
+        scriptLines.unshift(`import { useHead } from "${importFrom}"`)
         scriptLines.push('useHead(head)')
       }
     }
