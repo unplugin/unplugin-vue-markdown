@@ -49,14 +49,17 @@ export interface Options {
   vueVersion?: string
 
   /**
-   * Enable head support, need to install @vueuse/head and register to App in main.js
+   * Enable head support, need to install @unhead/vue and register to App in main.js
+   *
+   * When `true` is passed, @unhead/vue will be used if installed.
+   * If not, @vueuse/head will be used.
    *
    * @default false
    */
-  headEnabled?: boolean
+  headEnabled?: boolean | 'unhead' | 'vueuse'
 
   /**
-   * The head field in frontmatter used to be used for @vueuse/head
+   * The head field in frontmatter used to be used for @unhead/vue
    *
    * When an empty string is passed, it will use the root properties of the frontmatter
    *
@@ -184,6 +187,7 @@ export interface Options {
 }
 
 export interface ResolvedOptions extends Required<Options> {
+  headEnabled: 'unhead' | 'vueuse' | false
   wrapperClasses: string
 }
 
