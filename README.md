@@ -140,6 +140,7 @@ export default {
 ```js
 // src/main.js
 import { createApp } from 'vue'
+
 import { createHead } from '@unhead/vue' // <--
 
 const app = createApp(App)
@@ -168,6 +169,8 @@ For more options available, please refer to [`@unhead/vue`'s docs](https://unhea
 ```ts
 // vite.config.js
 import Markdown from 'vite-plugin-vue-markdown'
+import MarkdownItAnchor from 'markdown-it-anchor'
+import MarkdownItPrism from 'markdown-it-prism'
 
 export default {
   plugins: [
@@ -182,8 +185,8 @@ export default {
       // A function providing the Markdown It instance gets the ability to apply custom settings/plugins
       markdownItSetup(md) {
         // for example
-        md.use(require('markdown-it-anchor'))
-        md.use(require('markdown-it-prism'))
+        md.use(MarkdownItAnchor)
+        md.use(MarkdownItPrism)
       },
       // Class names for the wrapper div
       wrapperClasses: 'markdown-body'
