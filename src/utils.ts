@@ -1,7 +1,7 @@
 export function getVueVersion(defaultVersion = '3.2.0') {
   try {
-    const _require = require
-    let v = _require('vue')
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    let v = require('vue')
     if (v.default)
       v = v.default
     return v.version || defaultVersion
@@ -13,8 +13,7 @@ export function getVueVersion(defaultVersion = '3.2.0') {
 
 export function isUnheadVueInstalled() {
   try {
-    const _require = require
-    _require('@unhead/vue')
+    require('@unhead/vue')
     return true
   }
   catch {
