@@ -1,15 +1,8 @@
 import { defineConfig } from 'tsup'
 
 export default defineConfig({
-  banner(ctx) {
-    if (ctx.format === 'esm') {
-      return {
-        js: `
-import { createRequire } from 'node:module';
-const require = createRequire(import.meta.url);
-`.trim(),
-      }
-    }
+  esbuildOptions(options) {
+    options.supported ??= {}
+    options.supported['import-meta'] = true
   },
-  external: ['vue', '@unhead/vue'],
 })
