@@ -112,7 +112,7 @@ export function createMarkdown(options: ResolvedOptions) {
         options.excerpt && ':excerpt="excerpt"',
         wrapperClassesResolved && `class="${wrapperClassesResolved}"`,
       ].filter(Boolean).join(' ')
-      html = `<${wrapperComponentName} ${attrs}>${html}</${wrapperComponent}>`
+      html = `<${wrapperComponentName} ${attrs}>${html}</${wrapperComponentName}>`
     }
 
     if (transforms.after)
