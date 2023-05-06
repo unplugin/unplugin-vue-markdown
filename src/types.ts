@@ -165,14 +165,14 @@ export interface Options {
    *
    * @default 'markdown-body'
    */
-  wrapperClasses?: string | string[]
+  wrapperClasses?: string | string[] | undefined | null | ((id: string, code: string) => string | string[] | undefined | null)
 
   /**
    * Component name to wrapper with
    *
    * @default undefined
    */
-  wrapperComponent?: string | undefined | null
+  wrapperComponent?: string | undefined | null | ((id: string, code: string) => string | undefined | null)
 
   /**
    * Custom tranformations apply before and after the markdown transformation
@@ -188,7 +188,6 @@ export interface Options {
 
 export interface ResolvedOptions extends Required<Options> {
   headEnabled: 'unhead' | 'vueuse' | false
-  wrapperClasses: string
 }
 
 export interface MarkdownEnv extends MarkdownItEnv {

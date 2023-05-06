@@ -72,7 +72,13 @@ export function createMarkdown(options: ResolvedOptions) {
   options.markdownItSetup(markdown)
 
   return (id: string, raw: string): TransformResult => {
-    const { wrapperClasses, wrapperComponent, transforms, headEnabled, frontmatterPreprocess } = options
+    const {
+      wrapperClasses,
+      wrapperComponent,
+      transforms,
+      headEnabled,
+      frontmatterPreprocess,
+    } = options
 
     raw = raw.trimStart()
 
@@ -83,12 +89,32 @@ export function createMarkdown(options: ResolvedOptions) {
     let html = markdown.render(raw, env)
     const { excerpt = '', frontmatter: data = null } = env
 
-    if (wrapperClasses)
-      html = `<div class="${wrapperClasses}">${html}</div>`
+    const wrapperClassesResolved = toArray(
+      typeof wrapperClasses === 'function'
+        ? wrapperClasses(id, raw)
+        : wrapperClasses,
+    )
+      .filter(Boolean)
+      .join(' ')
+
+    if (wrapperClassesResolved)
+      html = `<div class="${wrapperClassesResolved}">${html}</div>`
     else
       html = `<div>${html}</div>`
-    if (wrapperComponent)
-      html = `<${wrapperComponent}${options.frontmatter ? ' :frontmatter="frontmatter"' : ''}${options.excerpt ? ' :excerpt="excerpt"' : ''}>${html}</${wrapperComponent}>`
+
+    const wrapperComponentName = typeof wrapperComponent === 'function'
+      ? wrapperComponent(id, raw)
+      : wrapperComponent
+
+    if (wrapperComponentName) {
+      const attrs = [
+        options.frontmatter && ':frontmatter="frontmatter"',
+        options.excerpt && ':excerpt="excerpt"',
+        wrapperClassesResolved && `class="${wrapperClassesResolved}"`,
+      ].filter(Boolean).join(' ')
+      html = `<${wrapperComponentName} ${attrs}>${html}</${wrapperComponent}>`
+    }
+
     if (transforms.after)
       html = transforms.after(html, id)
 
