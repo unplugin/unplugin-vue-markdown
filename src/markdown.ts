@@ -110,7 +110,6 @@ export function createMarkdown(options: ResolvedOptions) {
       const attrs = [
         options.frontmatter && ':frontmatter="frontmatter"',
         options.excerpt && ':excerpt="excerpt"',
-        wrapperClassesResolved && `class="${wrapperClassesResolved}"`,
       ].filter(Boolean).join(' ')
       html = `<${wrapperComponentName} ${attrs}>${html}</${wrapperComponentName}>`
     }
