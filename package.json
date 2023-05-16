@@ -34,7 +34,7 @@
     "dev": "npm run build -- --watch",
     "example:dev": "cp README.md example/README.md && npm -C example run dev",
     "example:build": "cp README.md example/README.md && npm -C example run build",
-    "build": "tsup src/index.ts --dts --format cjs,esm",
+    "build": "tsup src/index.ts --dts --format cjs,esm --shims --target=node12",
     "test": "vitest",
     "test:update": "vitest -u",
     "lint": "eslint .",

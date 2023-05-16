@@ -1,7 +1,10 @@
+import { createRequire } from 'node:module'
+
+const require = createRequire(import.meta.url)
+
 export function getVueVersion(defaultVersion = '3.2.0') {
   try {
-    const _require = require
-    let v = _require('vue')
+    let v = require('vue')
     if (v.default)
       v = v.default
     return v.version || defaultVersion
@@ -13,8 +16,7 @@ export function getVueVersion(defaultVersion = '3.2.0') {
 
 export function isUnheadVueInstalled() {
   try {
-    const _require = require
-    _require('@unhead/vue')
+    require('@unhead/vue')
     return true
   }
   catch {
