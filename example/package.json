@@ -6,17 +6,17 @@
   },
   "dependencies": {
     "@unhead/vue": "^1.1.26",
-    "vue": "^3.2.47",
-    "vue-router": "^4.1.6"
+    "vue": "^3.3.2",
+    "vue-router": "^4.2.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.2.1",
+    "@vitejs/plugin-vue": "^4.2.3",
     "cross-env": "^7.0.3",
     "markdown-it-prism": "^2.3.0",
     "prismjs": "^1.29.0",
     "typescript": "^5.0.4",
-    "vite": "^4.3.4",
-    "vite-plugin-inspect": "^0.7.24",
+    "vite": "^4.3.7",
+    "vite-plugin-inspect": "^0.7.26",
     "vite-plugin-pages": "^0.29.0",
     "vite-plugin-vue-markdown": "workspace:*"
   }
