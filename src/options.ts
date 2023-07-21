@@ -9,7 +9,7 @@ export function resolveOptions(userOptions: Options): ResolvedOptions {
     excerpt: false,
     exposeFrontmatter: true,
     exposeExcerpt: false,
-    exportFontmatter: true,
+    exportFrontmatter: true,
     escapeCodeTagInterpolation: true,
     customSfcBlocks: ['route', 'i18n', 'style'],
     componentOptions: {},

@@ -137,7 +137,7 @@ export interface Options {
    *
    * @default true
    */
-  exportFontmatter?: boolean
+  exportFrontmatter?: boolean
 
   /**
    * Add `v-pre` to `<code>` tag to escape curly brackets interpolation

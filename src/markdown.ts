@@ -172,7 +172,7 @@ export function createMarkdown(options: ResolvedOptions) {
 
       scriptLines.push(`const frontmatter = ${JSON.stringify(frontmatter)}`)
 
-      if (options.exportFontmatter) {
+      if (options.exportFrontmatter) {
         frontmatterExportsLines = Object.entries(frontmatter)
           .map(([key, value]) => {
             if (EXPORTS_KEYWORDS.includes(key))
