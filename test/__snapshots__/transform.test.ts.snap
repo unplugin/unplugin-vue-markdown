@@ -56,6 +56,19 @@ defineExpose({ frontmatter })
 </script>"
 `;
 
+exports[`transform > export keyword frontmatters 1`] = `
+"<template><div class=\\"markdown-body\\"><p>Hello</p>
+</div></template>
+<script setup>
+const frontmatter = {\\"class\\":\\"text\\",\\"default\\":\\"foo\\"}
+defineExpose({ frontmatter })
+</script>
+<script>
+export const _class = \\"text\\"
+export const _default = \\"foo\\"
+</script>"
+`;
+
 exports[`transform > exposes frontmatter 1`] = `
 "<template><div class=\\"markdown-body\\"><h1>Hello</h1>
 </div></template>

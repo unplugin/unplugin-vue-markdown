@@ -101,4 +101,16 @@ function onClick() {
 `
     expect(markdownToVue('', md).code).toMatchSnapshot()
   })
+
+  it('export keyword frontmatters', () => {
+    const md = `
+---
+class: 'text'
+default: 'foo'
+---
+
+Hello
+`
+    expect(markdownToVue('', md).code).toMatchSnapshot()
+  })
 })

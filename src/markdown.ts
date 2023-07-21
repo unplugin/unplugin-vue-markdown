@@ -9,6 +9,28 @@ import { preprocessHead } from './head'
 const scriptSetupRE = /<\s*script([^>]*)\bsetup\b([^>]*)>([\s\S]*)<\/script>/mg
 const defineExposeRE = /defineExpose\s*\(/mg
 
+const EXPORTS_KEYWORDS = [
+  'class',
+  'default',
+  'export',
+  'function',
+  'import',
+  'let',
+  'var',
+  'const',
+  'from',
+  'as',
+  'return',
+  'if',
+  'else',
+  'switch',
+  'case',
+  'break',
+  'for',
+  'while',
+  'do',
+]
+
 interface ScriptMeta {
   code: string
   attr: string
@@ -150,7 +172,14 @@ export function createMarkdown(options: ResolvedOptions) {
 
       scriptLines.push(`const frontmatter = ${JSON.stringify(frontmatter)}`)
 
-      frontmatterExportsLines = Object.entries(frontmatter).map(([key, value]) => `export const ${key} = ${JSON.stringify(value)}`)
+      if (options.exportFontmatter) {
+        frontmatterExportsLines = Object.entries(frontmatter)
+          .map(([key, value]) => {
+            if (EXPORTS_KEYWORDS.includes(key))
+              key = `_${key}`
+            return `export const ${key} = ${JSON.stringify(value)}`
+          })
+      }
 
       if (!isVue2 && options.exposeFrontmatter && !hasExplicitExports())
         scriptLines.push('defineExpose({ frontmatter })')

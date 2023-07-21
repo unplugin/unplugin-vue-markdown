@@ -133,6 +133,13 @@ export interface Options {
   exposeExcerpt?: boolean
 
   /**
+   * Export frontmatter in component module
+   *
+   * @default true
+   */
+  exportFontmatter?: boolean
+
+  /**
    * Add `v-pre` to `<code>` tag to escape curly brackets interpolation
    *
    * @see https://github.com/antfu/vite-plugin-vue-markdown/issues/14
