@@ -1,7 +1,7 @@
 {
   "name": "vite-plugin-vue-markdown",
   "version": "0.23.7",
-  "packageManager": "pnpm@8.6.9",
+  "packageManager": "pnpm@8.6.12",
   "description": "Compile Markdown to Vue component",
   "author": "Anthony Fu <anthonyfu117@hotmail.com>",
   "license": "MIT",
@@ -20,8 +20,8 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs"
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
     }
   },
   "main": "./dist/index.js",
@@ -49,23 +49,23 @@
     "@mdit-vue/plugin-component": "^0.12.0",
     "@mdit-vue/plugin-frontmatter": "^0.12.0",
     "@mdit-vue/types": "^0.12.0",
-    "@rollup/pluginutils": "^5.0.2",
-    "@types/markdown-it": "^12.2.3",
+    "@rollup/pluginutils": "^5.0.3",
+    "@types/markdown-it": "^13.0.0",
     "markdown-it": "^13.0.1"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.39.8",
+    "@antfu/eslint-config": "^0.40.2",
     "@antfu/ni": "^0.21.5",
-    "@types/node": "^20.4.2",
-    "@unhead/vue": "^1.1.32",
+    "@types/node": "^20.5.0",
+    "@unhead/vue": "^1.2.2",
     "@vue/test-utils": "^2.4.1",
     "bumpp": "^9.1.1",
-    "eslint": "^8.45.0",
-    "rollup": "^3.26.3",
-    "tsup": "^7.1.0",
+    "eslint": "^8.47.0",
+    "rollup": "^3.28.0",
+    "tsup": "^7.2.0",
     "typescript": "^5.1.6",
-    "vite": "^4.4.6",
-    "vitest": "^0.33.0",
+    "vite": "^4.4.9",
+    "vitest": "^0.34.1",
     "vue": "^3.3.4"
   }
 }
