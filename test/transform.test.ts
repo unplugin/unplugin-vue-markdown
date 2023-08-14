@@ -2,9 +2,9 @@ import { describe, expect, it } from 'vitest'
 import { createMarkdown } from '../src/markdown'
 import { resolveOptions } from '../src/options'
 
-describe('transform', () => {
+describe('transform', async () => {
   const options = resolveOptions({})
-  const markdownToVue = createMarkdown(options)
+  const markdownToVue = await createMarkdown(options)
 
   it('basic', () => {
     const md = `---

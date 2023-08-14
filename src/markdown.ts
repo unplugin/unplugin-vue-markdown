@@ -61,7 +61,7 @@ function extractCustomBlock(html: string, options: ResolvedOptions) {
   return { html, blocks }
 }
 
-export function createMarkdown(options: ResolvedOptions) {
+export async function createMarkdown(options: ResolvedOptions) {
   const isVue2 = options.vueVersion.startsWith('2.')
 
   const markdown = new MarkdownIt({
@@ -91,7 +91,7 @@ export function createMarkdown(options: ResolvedOptions) {
     markdown.use(plugin, options)
   })
 
-  options.markdownItSetup(markdown)
+  await options.markdownItSetup(markdown)
 
   return (id: string, raw: string): TransformResult => {
     const {

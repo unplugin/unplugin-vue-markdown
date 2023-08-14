@@ -165,7 +165,7 @@ export interface Options {
    * A function providing the Markdown It instance gets the ability to apply custom
    * settings/plugins
    */
-  markdownItSetup?: (MarkdownIt: MarkdownIt) => void
+  markdownItSetup?: (MarkdownIt: MarkdownIt) => void | Promise<void>
 
   /**
    * Class names for wrapper div

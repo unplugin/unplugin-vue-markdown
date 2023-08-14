@@ -3,7 +3,7 @@ import { createMarkdown } from '../src/markdown'
 import { resolveOptions } from '../src/options'
 
 describe('excerpt', () => {
-  it('rendered excerpt', () => {
+  it('rendered excerpt', async () => {
     const options = resolveOptions({
       excerpt: true,
       frontmatterOptions: {
@@ -13,7 +13,7 @@ describe('excerpt', () => {
         },
       },
     })
-    const markdownToVue = createMarkdown(options)
+    const markdownToVue = await createMarkdown(options)
     const md = `---
 title: Hey
 ---
@@ -30,7 +30,7 @@ This is an excerpt which has been rendered to **HTML**.
     expect(markdownToVue('', md).code).toMatchSnapshot()
   })
 
-  it('raw excerpt', () => {
+  it('raw excerpt', async () => {
     const options = resolveOptions({
       excerpt: true,
       frontmatterOptions: {
@@ -41,7 +41,7 @@ This is an excerpt which has been rendered to **HTML**.
         },
       },
     })
-    const markdownToVue = createMarkdown(options)
+    const markdownToVue = await createMarkdown(options)
     const md = `---
 title: Hey
 ---

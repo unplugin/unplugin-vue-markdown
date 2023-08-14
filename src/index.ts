@@ -16,11 +16,11 @@ function VitePluginMarkdown(userOptions: Options = {}): Plugin {
   return {
     name: 'vite-plugin-vue-markdown',
     enforce: 'pre',
-    transform(raw, id) {
+    async transform(raw, id) {
       if (!filter(id))
         return
       try {
-        return markdownToVue(id, raw)
+        return (await markdownToVue)(id, raw)
       }
       catch (e: any) {
         this.error(e)
@@ -32,7 +32,7 @@ function VitePluginMarkdown(userOptions: Options = {}): Plugin {
 
       const defaultRead = ctx.read
       ctx.read = async function () {
-        return markdownToVue(ctx.file, await defaultRead()).code
+        return (await markdownToVue)(ctx.file, await defaultRead()).code
       }
     },
   }
