@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-vue-markdown",
-  "version": "0.23.7",
+  "version": "0.23.8",
   "packageManager": "pnpm@8.6.12",
   "description": "Compile Markdown to Vue component",
   "author": "Anthony Fu <anthonyfu117@hotmail.com>",
