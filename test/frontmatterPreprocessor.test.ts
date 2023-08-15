@@ -1,7 +1,7 @@
 import { readFile } from 'node:fs/promises'
 import { describe, expect, it } from 'vitest'
-import { createMarkdown } from '../src/markdown'
-import { resolveOptions } from '../src/options'
+import { createMarkdown } from '../src/core/markdown'
+import { resolveOptions } from '../src/core/options'
 import type { MetaProperty, ResolvedOptions } from '../src/types'
 
 const frontmatterPreprocess: ResolvedOptions['frontmatterPreprocess'] = (fm) => {

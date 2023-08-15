@@ -3,7 +3,7 @@ import type { ComponentPluginOptions } from '@mdit-vue/plugin-component'
 import type { FrontmatterPluginOptions } from '@mdit-vue/plugin-frontmatter'
 import type { MarkdownItEnv } from '@mdit-vue/types'
 import type { FilterPattern } from '@rollup/pluginutils'
-import type { preprocessHead } from './head'
+import type { preprocessHead } from './core/head'
 
 /** a `<meta />` property in HTML is defined with the following name/values */
 export interface MetaProperty {
@@ -142,7 +142,7 @@ export interface Options {
   /**
    * Add `v-pre` to `<code>` tag to escape curly brackets interpolation
    *
-   * @see https://github.com/antfu/vite-plugin-vue-markdown/issues/14
+   * @see https://github.com/antfu/unplugin-vue-markdown/issues/14
    * @default true
    */
   escapeCodeTagInterpolation?: boolean
