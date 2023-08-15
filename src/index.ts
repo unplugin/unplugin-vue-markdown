@@ -1,24 +1,26 @@
-import type { Plugin } from 'vite'
 import { createFilter } from '@rollup/pluginutils'
-import { createMarkdown } from './markdown'
-import { resolveOptions } from './options'
+import type { UnpluginFactory } from 'unplugin'
+import { createUnplugin } from 'unplugin'
+import { createMarkdown } from './core/markdown'
+import { resolveOptions } from './core/options'
 import type { Options } from './types'
 
-function VitePluginMarkdown(userOptions: Options = {}): Plugin {
+export const unpluginFactory: UnpluginFactory<Options> = (userOptions = {}) => {
   const options = resolveOptions(userOptions)
   const markdownToVue = createMarkdown(options)
 
   const filter = createFilter(
-    userOptions.include || /\.md$/,
+    userOptions.include || /\.md$|\.md\?vue/,
     userOptions.exclude,
   )
 
   return {
-    name: 'vite-plugin-vue-markdown',
+    name: 'unplugin-vue-markdown',
     enforce: 'pre',
+    transformInclude(id) {
+      return filter(id)
+    },
     async transform(raw, id) {
-      if (!filter(id))
-        return
       try {
         return (await markdownToVue)(id, raw)
       }
@@ -26,16 +28,18 @@ function VitePluginMarkdown(userOptions: Options = {}): Plugin {
         this.error(e)
       }
     },
-    async handleHotUpdate(ctx) {
-      if (!filter(ctx.file))
-        return
+    vite: {
+      async handleHotUpdate(ctx) {
+        if (!filter(ctx.file))
+          return
 
-      const defaultRead = ctx.read
-      ctx.read = async function () {
-        return (await markdownToVue)(ctx.file, await defaultRead()).code
-      }
+        const defaultRead = ctx.read
+        ctx.read = async function () {
+          return (await markdownToVue)(ctx.file, await defaultRead()).code
+        }
+      },
     },
   }
 }
 
-export default VitePluginMarkdown
+export default /* #__PURE__ */ createUnplugin(unpluginFactory)

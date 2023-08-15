@@ -1,4 +1,4 @@
-import type { Options, ResolvedOptions } from './types'
+import type { Options, ResolvedOptions } from '../types'
 import { getVueVersion, isUnheadVueInstalled } from './utils'
 
 export function resolveOptions(userOptions: Options): ResolvedOptions {

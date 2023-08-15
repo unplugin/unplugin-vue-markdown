@@ -3,7 +3,7 @@ import { toArray, uniq } from '@antfu/utils'
 import { componentPlugin } from '@mdit-vue/plugin-component'
 import { frontmatterPlugin } from '@mdit-vue/plugin-frontmatter'
 import type { TransformResult } from 'vite'
-import type { MarkdownEnv, ResolvedOptions } from './types'
+import type { MarkdownEnv, ResolvedOptions } from '../types'
 import { preprocessHead } from './head'
 
 const scriptSetupRE = /<\s*script([^>]*)\bsetup\b([^>]*)>([\s\S]*)<\/script>/mg
