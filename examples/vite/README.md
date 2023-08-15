@@ -31,7 +31,7 @@ export default defineConfig({
 })
 ```
 
-Example: [`examples/vite/`](./examples/vite/)
+Example: [`examples/vite`](./examples/vite/)
 
 <br></details>
 
@@ -40,10 +40,23 @@ Example: [`examples/vite/`](./examples/vite/)
 
 ```ts
 // webpack.config.js
+const { VueLoaderPlugin } = require('vue-loader')
+const Markdown = require('unplugin-vue-markdown/webpack')
+
 module.exports = {
   /* ... */
+  module: {
+    rules: [
+      // ... other rules
+      {
+        test: /\.(vue|md)$/,
+        loader: 'vue-loader'
+      }
+    ]
+  },
   plugins: [
-    require('unplugin-vue-markdown/webpack')({ /* options */ })
+    new VueLoaderPlugin(),
+    Markdown({ /* options */ })
   ]
 }
 ```
@@ -55,19 +68,27 @@ module.exports = {
 
 ```ts
 // vue.config.js
+const Markdown = require('unplugin-vue-markdown/webpack')
+
 module.exports = {
-  configureWebpack: {
-    plugins: [
-      require('unplugin-vue-markdown/webpack')({ /* options */ }),
-    ],
-  },
+  parallel: false, // Disable thread-loader which will cause errors, we are still investigating the root cause
   chainWebpack: (config) => {
     config.module
       .rule('vue')
       .test(/\.(vue|md)$/) // <-- allows Vue to compile Markdown files
+
+    config
+      .plugin('markdown')
+      .use(Markdown({
+        markdownItUses: [
+          prism,
+        ],
+      }))
   },
 }
 ```
+
+Example: [`examples/vue-cli`](./examples/vue-cli/)
 
 <br></details>
 
@@ -160,7 +181,7 @@ npm i @unhead/vue
 ```js
 // vite.config.js
 import Vue from '@vitejs/plugin-vue'
-import Markdown from 'unplugin-vue-markdown'
+import Markdown from 'unplugin-vue-markdown/vite'
 
 export default {
   plugins: [
