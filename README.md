@@ -259,7 +259,7 @@ See [the tsdoc](./src/types.ts) for more advanced options
 
 ## Example
 
-See the [/example](./example).
+See the [/examples](./examples).
 
 Or the pre-configured Markdown template [Vitesse](https://github.com/antfu/vitesse).
 
