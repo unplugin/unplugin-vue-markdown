@@ -187,6 +187,10 @@ export interface Options {
   transforms?: {
     before?: (code: string, id: string) => string
     after?: (code: string, id: string) => string
+    /**
+     * Return extra code to be injected into the `<script>` tag
+     */
+    extraScripts?: (frontmatter: Record<string, any>, id: string) => string[]
   }
 
   include?: FilterPattern
