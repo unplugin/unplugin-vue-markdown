@@ -15,13 +15,3 @@ export function getVueVersion(defaultVersion = '3.2.0') {
     return defaultVersion
   }
 }
-
-export function isUnheadVueInstalled() {
-  try {
-    _require('@unhead/vue')
-    return true
-  }
-  catch {
-    return false
-  }
-}

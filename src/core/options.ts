@@ -1,5 +1,5 @@
 import type { Options, ResolvedOptions } from '../types'
-import { getVueVersion, isUnheadVueInstalled } from './utils'
+import { getVueVersion } from './utils'
 
 export function resolveOptions(userOptions: Options): ResolvedOptions {
   const defaultOptions: ResolvedOptions = {
@@ -35,9 +35,6 @@ export function resolveOptions(userOptions: Options): ResolvedOptions {
     ...defaultOptions,
     ...userOptions,
   }
-
-  if (options.headEnabled === true)
-    options.headEnabled = isUnheadVueInstalled() ? 'unhead' : 'vueuse'
 
   return options as ResolvedOptions
 }

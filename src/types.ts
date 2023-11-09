@@ -51,12 +51,9 @@ export interface Options {
   /**
    * Enable head support, need to install @unhead/vue and register to App in main.js
    *
-   * When `true` is passed, @unhead/vue will be used if installed.
-   * If not, @vueuse/head will be used.
-   *
-   * @default false
+   * @default true
    */
-  headEnabled?: boolean | 'unhead' | 'vueuse'
+  headEnabled?: boolean
 
   /**
    * The head field in frontmatter used to be used for @unhead/vue
@@ -197,9 +194,7 @@ export interface Options {
   exclude?: FilterPattern
 }
 
-export interface ResolvedOptions extends Required<Options> {
-  headEnabled: 'unhead' | 'vueuse' | false
-}
+export interface ResolvedOptions extends Required<Options> {}
 
 export interface MarkdownEnv extends MarkdownItEnv {
   id: string

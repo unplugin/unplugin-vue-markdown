@@ -182,9 +182,11 @@ export async function createMarkdown(options: ResolvedOptions) {
         scriptLines.push('defineExpose({ frontmatter })')
 
       if (!isVue2 && headEnabled && head) {
+        // @ts-expect-error legacy option
+        if (headEnabled === 'vueuse')
+          throw new Error('unplugin-vue-markdown no longer supports @vueuse/head. Change `headEnabled` to `true` and install `@unhead/vue` instead.')
         scriptLines.push(`const head = ${JSON.stringify(head)}`)
-        const importFrom = headEnabled === 'unhead' ? '@unhead/vue' : '@vueuse/head'
-        scriptLines.unshift(`import { useHead } from "${importFrom}"`)
+        scriptLines.unshift(`import { useHead } from "@unhead/vue"`)
         scriptLines.push('useHead(head)')
       }
 
