@@ -1,21 +1,5 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`transform > Vue directives 1`] = `
-"<template><div class=\\"markdown-body\\">
-<p><button @click=\\"onClick\\"></button></p>
-</div></template>
-<script setup lang=\\"ts\\">
-const frontmatter = {\\"name\\":\\"My Cool App\\"}
-defineExpose({ frontmatter })
-function onClick() {
-  // ...
-}
-</script>
-<script lang=\\"ts\\">
-export const name = \\"My Cool App\\"
-</script>"
-`;
-
 exports[`transform > basic 1`] = `
 "<template><div class=\\"markdown-body\\"><h1>Hello</h1>
 <ul>
@@ -114,4 +98,20 @@ const frontmatter = {}
 defineExpose({ frontmatter })
 </script>
 <style>h1 { color: red }</style>"
+`;
+
+exports[`transform > vue directives 1`] = `
+"<template><div class=\\"markdown-body\\">
+<p><button @click=\\"onClick\\"></button></p>
+</div></template>
+<script setup lang=\\"ts\\">
+const frontmatter = {\\"name\\":\\"My Cool App\\"}
+defineExpose({ frontmatter })
+function onClick() {
+  // ...
+}
+</script>
+<script lang=\\"ts\\">
+export const name = \\"My Cool App\\"
+</script>"
 `;

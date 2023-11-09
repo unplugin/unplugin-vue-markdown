@@ -85,7 +85,7 @@ This is {{frontmatter.name}}
     expect(markdownToVue('', md).code).toMatchSnapshot()
   })
 
-  it('Vue directives', () => {
+  it('vue directives', () => {
     const md = `
 ---
 name: 'My Cool App'
