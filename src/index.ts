@@ -5,13 +5,15 @@ import { createMarkdown } from './core/markdown'
 import { resolveOptions } from './core/options'
 import type { Options } from './types'
 
+const cssIdRE = /\.(css|postcss|sass|scss|less|stylus|styl)($|\?)/
+
 export const unpluginFactory: UnpluginFactory<Options> = (userOptions = {}) => {
   const options = resolveOptions(userOptions)
   const markdownToVue = createMarkdown(options)
 
   const filter = createFilter(
     userOptions.include || /\.md$|\.md\?vue/,
-    userOptions.exclude,
+    userOptions.exclude || cssIdRE,
   )
 
   return {
