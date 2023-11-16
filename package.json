@@ -75,7 +75,7 @@
     "release": "bumpp && npm publish"
   },
   "peerDependencies": {
-    "vite": "^2.0.0 || ^3.0.0-0 || ^4.0.0"
+    "vite": "^2.0.0 || ^3.0.0-0 || ^4.0.0-0 || ^5.0.0-0"
   },
   "dependencies": {
     "@mdit-vue/plugin-component": "^1.0.0",
