@@ -145,7 +145,7 @@ import { Counter } from './Counter.vue'
 <Counter :init='5'/>
 ```
 
-Or you can use [`vite-plugin-components`](#work-with-vite-plugin-components) for auto components registration.
+Or you can use [`unplugin-vue-components`](#work-with-unplugin-vue-components) for auto components registration.
 
 ## Frontmatter
 
@@ -291,7 +291,7 @@ Put your markdown under `./src/pages/xx.md`, then you can access the page via ro
 
 ### Work with [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components)
 
-`vite-plugin-components` allows you to do on-demand components auto-importing without worrying about registration.
+`unplugin-vue-components` allows you to do on-demand components auto-importing without worrying about registration.
 
 ```ts
 import Vue from '@vitejs/plugin-vue'
@@ -310,7 +310,7 @@ export default {
       extensions: ['vue', 'md'],
 
       // allow auto import and register components used in markdown
-      customLoaderMatcher: path => path.endsWith('.md'),
+      include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
     })
   ],
 }
