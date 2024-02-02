@@ -2,17 +2,17 @@
   "name": "unplugin-vue-markdown",
   "type": "module",
   "version": "0.25.2",
-  "packageManager": "pnpm@8.10.5",
+  "packageManager": "pnpm@8.15.1",
   "description": "Compile Markdown to Vue component",
   "author": "Anthony Fu <anthonyfu117@hotmail.com>",
   "license": "MIT",
   "funding": "https://github.com/sponsors/antfu",
-  "homepage": "https://github.com/mdit-vue/unplugin-vue-markdown",
+  "homepage": "https://github.com/unplugin/unplugin-vue-markdown",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mdit-vue/unplugin-vue-markdown"
+    "url": "https://github.com/unplugin/unplugin-vue-markdown"
   },
-  "bugs": "https://github.com/mdit-vue/unplugin-vue-markdown/issues",
+  "bugs": "https://github.com/unplugin/unplugin-vue-markdown/issues",
   "keywords": [
     "vite",
     "unplugin",
@@ -78,32 +78,32 @@
     "vite": "^2.0.0 || ^3.0.0-0 || ^4.0.0-0 || ^5.0.0-0"
   },
   "dependencies": {
-    "@mdit-vue/plugin-component": "^1.0.0",
-    "@mdit-vue/plugin-frontmatter": "^1.0.0",
-    "@mdit-vue/types": "^1.0.0",
-    "@rollup/pluginutils": "^5.0.5",
-    "@types/markdown-it": "^13.0.6",
-    "markdown-it": "^13.0.2",
-    "unplugin": "^1.5.0"
+    "@mdit-vue/plugin-component": "^2.0.0",
+    "@mdit-vue/plugin-frontmatter": "^2.0.0",
+    "@mdit-vue/types": "^2.0.0",
+    "@rollup/pluginutils": "^5.1.0",
+    "@types/markdown-it": "^13.0.7",
+    "markdown-it": "^14.0.0",
+    "unplugin": "^1.6.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^1.1.4",
-    "@antfu/ni": "^0.21.9",
-    "@antfu/utils": "^0.7.6",
-    "@types/node": "^20.9.0",
-    "@unhead/vue": "^1.8.4",
-    "@vue/test-utils": "^2.4.2",
-    "bumpp": "^9.2.0",
+    "@antfu/eslint-config": "^2.6.3",
+    "@antfu/ni": "^0.21.12",
+    "@antfu/utils": "^0.7.7",
+    "@types/node": "^20.11.16",
+    "@unhead/vue": "^1.8.10",
+    "@vue/test-utils": "^2.4.4",
+    "bumpp": "^9.3.0",
     "chalk": "^5.3.0",
-    "eslint": "^8.53.0",
+    "eslint": "^8.56.0",
     "esno": "^4.0.0",
     "fast-glob": "^3.3.2",
-    "rollup": "^4.4.1",
-    "tsup": "^7.2.0",
-    "typescript": "^5.2.2",
-    "vite": "^5.0.0",
-    "vitest": "^0.34.6",
-    "vue": "^3.3.8",
-    "webpack": "^5.89.0"
+    "rollup": "^4.9.6",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.12",
+    "vitest": "^1.2.2",
+    "vue": "^3.4.15",
+    "webpack": "^5.90.1"
   }
 }
