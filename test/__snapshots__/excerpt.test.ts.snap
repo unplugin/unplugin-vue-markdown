@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`excerpt > raw excerpt 1`] = `
-"<template><div class=\\"markdown-body\\"><p>This is an excerpt which is kept as <strong>raw Markdown</strong>.</p>
+"<template><div class="markdown-body"><p>This is an excerpt which is kept as <strong>raw Markdown</strong>.</p>
 <!-- more -->
 <h1>Hello</h1>
 <ul>
@@ -11,18 +11,18 @@ exports[`excerpt > raw excerpt 1`] = `
 </ul>
 </div></template>
 <script setup>
-const frontmatter = {\\"title\\":\\"Hey\\"}
+const frontmatter = {"title":"Hey"}
 defineExpose({ frontmatter })
-const excerpt = \\"\\\\nThis is an excerpt which is kept as **raw Markdown**.\\\\n\\\\n\\"
+const excerpt = "\\nThis is an excerpt which is kept as **raw Markdown**.\\n\\n"
 </script>
 <script>
-export const title = \\"Hey\\"
-export const excerpt = \\"\\\\nThis is an excerpt which is kept as **raw Markdown**.\\\\n\\\\n\\"
+export const title = "Hey"
+export const excerpt = "\\nThis is an excerpt which is kept as **raw Markdown**.\\n\\n"
 </script>"
 `;
 
 exports[`excerpt > rendered excerpt 1`] = `
-"<template><div class=\\"markdown-body\\"><p>This is an excerpt which has been rendered to <strong>HTML</strong>.</p>
+"<template><div class="markdown-body"><p>This is an excerpt which has been rendered to <strong>HTML</strong>.</p>
 <!-- more -->
 <h1>Hello</h1>
 <ul>
@@ -32,12 +32,12 @@ exports[`excerpt > rendered excerpt 1`] = `
 </ul>
 </div></template>
 <script setup>
-const frontmatter = {\\"title\\":\\"Hey\\"}
+const frontmatter = {"title":"Hey"}
 defineExpose({ frontmatter })
-const excerpt = \\"<p>This is an excerpt which has been rendered to <strong>HTML</strong>.</p>\\\\n\\"
+const excerpt = "<p>This is an excerpt which has been rendered to <strong>HTML</strong>.</p>\\n"
 </script>
 <script>
-export const title = \\"Hey\\"
-export const excerpt = \\"<p>This is an excerpt which has been rendered to <strong>HTML</strong>.</p>\\\\n\\"
+export const title = "Hey"
+export const excerpt = "<p>This is an excerpt which has been rendered to <strong>HTML</strong>.</p>\\n"
 </script>"
 `;
