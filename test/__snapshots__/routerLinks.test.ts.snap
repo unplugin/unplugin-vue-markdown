@@ -1,0 +1,60 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`router link transforms > does not convert to router links if router link option is not provided 1`] = `
+{
+  "code": "<template><div class="markdown-body"><h1>Internal links to Router links!</h1>
+<p><a href="/">test</a>
+<a href="/test/1234">test 1234</a>
+<a href="/blog/this-is-my-test-slug-12345">test slug</a></p>
+</div></template>
+<script setup>
+const frontmatter = {}
+defineExpose({ frontmatter })
+</script>",
+  "map": {
+    "mappings": "",
+  },
+}
+`;
+
+exports[`router link transforms > does not transform non-internal links to router links 1`] = `
+"<template><div class="markdown-body"><h1>Non-internal links</h1>
+<p><a href="https://example.com">test</a>
+<a href="#header1234">test 1234</a>
+<a href="https://example.com/this/is/a/really/long/path">test url with long path</a></p>
+</div></template>
+<script setup>
+const frontmatter = {}
+defineExpose({ frontmatter })
+</script>"
+`;
+
+exports[`router link transforms > does not transform non-internal links to router links 2`] = `
+"<template><div class="markdown-body"><h1>Non-internal links</h1>
+<p><a href="https://example.com">test</a>
+<a href="#header1234">test 1234</a>
+<a href="https://example.com/this/is/a/really/long/path">test url with long path</a></p>
+</div></template>
+<script setup>
+const frontmatter = {}
+defineExpose({ frontmatter })
+</script>"
+`;
+
+exports[`router link transforms > supports custom router link components 1`] = `
+"<template><div class="markdown-body"><h1>Internal links to Router links!</h1>
+<MyCustomRouterLink to="/">test</MyCustomRouterLink><MyCustomRouterLink to="/test/1234">test 1234</MyCustomRouterLink><MyCustomRouterLink to="/blog/this-is-my-test-slug-12345">test slug</MyCustomRouterLink></div></template>
+<script setup>
+const frontmatter = {}
+defineExpose({ frontmatter })
+</script>"
+`;
+
+exports[`router link transforms > transforms internal links to router links 1`] = `
+"<template><div class="markdown-body"><h1>Internal links to Router links!</h1>
+<RouterLink to="/">test</RouterLink><RouterLink to="/test/1234">test 1234</RouterLink><RouterLink to="/blog/this-is-my-test-slug-12345">test slug</RouterLink></div></template>
+<script setup>
+const frontmatter = {}
+defineExpose({ frontmatter })
+</script>"
+`;

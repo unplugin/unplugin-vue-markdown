@@ -179,6 +179,13 @@ export interface Options {
   wrapperComponent?: string | undefined | null | ((id: string, code: string) => string | undefined | null)
 
   /**
+   * Component name to wrap internal links with.
+   *
+   * @default undefined
+   */
+  routerLinkComponent?: string | undefined | null | ((id: string, code: string) => string | undefined | null)
+
+  /**
    * Custom tranformations apply before and after the markdown transformation
    */
   transforms?: {

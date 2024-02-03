@@ -8,6 +8,7 @@ import { preprocessHead } from './head'
 
 const scriptSetupRE = /<\s*script([^>]*)\bsetup\b([^>]*)>([\s\S]*)<\/script>/mg
 const defineExposeRE = /defineExpose\s*\(/mg
+const internalLinkRE = /\[(.+)\]\((\/[?=\w\/-]*)\)/g
 
 const EXPORTS_KEYWORDS = [
   'class',
@@ -100,10 +101,18 @@ export async function createMarkdown(options: ResolvedOptions) {
       transforms,
       headEnabled,
       frontmatterPreprocess,
+      routerLinkComponent,
     } = options
 
     raw = raw.trimStart()
     raw = transforms.before?.(raw, id) ?? raw
+
+    const routerLinkComponentName = typeof routerLinkComponent === 'function'
+      ? routerLinkComponent(id, raw)
+      : routerLinkComponent
+
+    if (routerLinkComponentName)
+      raw = raw.replace(internalLinkRE, `<${routerLinkComponentName} to="$2">$1</${routerLinkComponentName}>`)
 
     const env: MarkdownEnv = { id }
     let html = markdown.render(raw, env)
