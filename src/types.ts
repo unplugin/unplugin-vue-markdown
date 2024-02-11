@@ -139,7 +139,7 @@ export interface Options {
   /**
    * Add `v-pre` to `<code>` tag to escape curly brackets interpolation
    *
-   * @see https://github.com/antfu/unplugin-vue-markdown/issues/14
+   * @see https://github.com/unplugin/unplugin-vue-markdown/issues/14
    * @default true
    */
   escapeCodeTagInterpolation?: boolean
