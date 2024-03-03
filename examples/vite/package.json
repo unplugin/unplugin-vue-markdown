@@ -1,5 +1,5 @@
 {
-  "type": "commonjs",
+  "type": "module",
   "private": true,
   "scripts": {
     "dev": "cross-env DEBUG=unplugin-vue-markdown:* vite",
