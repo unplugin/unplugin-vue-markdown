@@ -78,12 +78,12 @@
     "vite": "^2.0.0 || ^3.0.0-0 || ^4.0.0-0 || ^5.0.0-0"
   },
   "dependencies": {
-    "@mdit-vue/plugin-component": "^2.0.0",
-    "@mdit-vue/plugin-frontmatter": "^2.0.0",
-    "@mdit-vue/types": "^2.0.0",
+    "@mdit-vue/plugin-component": "^2.1.1",
+    "@mdit-vue/plugin-frontmatter": "^2.1.0",
+    "@mdit-vue/types": "^2.1.0",
     "@rollup/pluginutils": "^5.1.0",
-    "@types/markdown-it": "^13.0.7",
-    "markdown-it": "^14.0.0",
+    "@types/markdown-it": "^14.0.1",
+    "markdown-it": "^14.1.0",
     "unplugin": "^1.6.0"
   },
   "devDependencies": {
