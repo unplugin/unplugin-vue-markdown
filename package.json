@@ -1,7 +1,7 @@
 {
   "name": "unplugin-vue-markdown",
   "type": "module",
-  "version": "0.26.0",
+  "version": "0.26.1",
   "packageManager": "pnpm@8.15.6",
   "description": "Compile Markdown to Vue component",
   "author": "Anthony Fu <anthonyfu117@hotmail.com>",
