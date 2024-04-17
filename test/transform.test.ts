@@ -113,4 +113,15 @@ Hello
 `
     expect(markdownToVue('', md).code).toMatchSnapshot()
   })
+
+  it('code escape', () => {
+    const md = `
+Hello \`{{ world }}\`
+
+\`\`\`js
+console.log(\`{{ world }}\`)
+\`\`\`
+`
+    expect(markdownToVue('', md).code).toMatchSnapshot()
+  })
 })

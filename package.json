@@ -2,7 +2,7 @@
   "name": "unplugin-vue-markdown",
   "type": "module",
   "version": "0.26.1",
-  "packageManager": "pnpm@8.15.6",
+  "packageManager": "pnpm@9.0.1",
   "description": "Compile Markdown to Vue component",
   "author": "Anthony Fu <anthonyfu117@hotmail.com>",
   "license": "MIT",
@@ -78,8 +78,8 @@
     "vite": "^2.0.0 || ^3.0.0-0 || ^4.0.0-0 || ^5.0.0-0"
   },
   "dependencies": {
-    "@mdit-vue/plugin-component": "^2.1.1",
-    "@mdit-vue/plugin-frontmatter": "^2.1.0",
+    "@mdit-vue/plugin-component": "^2.1.2",
+    "@mdit-vue/plugin-frontmatter": "^2.1.2",
     "@mdit-vue/types": "^2.1.0",
     "@rollup/pluginutils": "^5.1.0",
     "@types/markdown-it": "^14.0.1",
@@ -87,7 +87,7 @@
     "unplugin": "^1.10.1"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.13.3",
+    "@antfu/eslint-config": "^2.14.0",
     "@antfu/ni": "^0.21.12",
     "@antfu/utils": "^0.7.7",
     "@types/node": "^20.12.7",
@@ -98,12 +98,12 @@
     "eslint": "^9.0.0",
     "esno": "^4.7.0",
     "fast-glob": "^3.3.2",
-    "rollup": "^4.14.2",
+    "rollup": "^4.14.3",
     "tsup": "^8.0.2",
     "typescript": "^5.4.5",
-    "vite": "^5.2.8",
+    "vite": "^5.2.9",
     "vitest": "^1.5.0",
-    "vue": "^3.4.21",
+    "vue": "^3.4.23",
     "webpack": "^5.91.0"
   }
 }
