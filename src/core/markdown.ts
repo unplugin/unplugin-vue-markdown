@@ -93,7 +93,7 @@ export async function createMarkdown(options: ResolvedOptions) {
 
   await options.markdownItSetup(markdown)
 
-  return (id: string, raw: string): TransformResult => {
+  return async (id: string, raw: string): Promise<TransformResult> => {
     const {
       wrapperClasses,
       wrapperComponent,
@@ -103,7 +103,7 @@ export async function createMarkdown(options: ResolvedOptions) {
     } = options
 
     raw = raw.trimStart()
-    raw = transforms.before?.(raw, id) ?? raw
+    raw = await transforms.before?.(raw, id) ?? raw
 
     const env: MarkdownEnv = { id }
     let html = markdown.render(raw, env)
@@ -134,7 +134,7 @@ export async function createMarkdown(options: ResolvedOptions) {
       html = `<${wrapperComponentName} ${attrs}>${html}</${wrapperComponentName}>`
     }
 
-    html = transforms.after?.(html, id) ?? html
+    html = await transforms.after?.(html, id) ?? html
 
     if (options.escapeCodeTagInterpolation) {
       // escape curly brackets interpolation in <code>, #14

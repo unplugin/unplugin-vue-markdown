@@ -37,7 +37,7 @@ export const unpluginFactory: UnpluginFactory<Options> = (userOptions = {}) => {
 
         const defaultRead = ctx.read
         ctx.read = async function () {
-          return (await markdownToVue)(ctx.file, await defaultRead()).code
+          return (await (await markdownToVue)(ctx.file, await defaultRead())).code
         }
       },
     },

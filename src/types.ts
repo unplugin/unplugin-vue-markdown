@@ -182,8 +182,8 @@ export interface Options {
    * Custom tranformations apply before and after the markdown transformation
    */
   transforms?: {
-    before?: (code: string, id: string) => string
-    after?: (code: string, id: string) => string
+    before?: (code: string, id: string) => string | Promise<string>
+    after?: (code: string, id: string) => string | Promise<string>
     /**
      * Return extra code to be injected into the `<script>` tag
      */
