@@ -11,7 +11,7 @@ export function getVueVersion(defaultVersion = '3.2.0') {
       v = v.default
     return v.version || defaultVersion
   }
-  catch (e) {
+  catch {
     return defaultVersion
   }
 }

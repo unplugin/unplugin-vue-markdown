@@ -4,9 +4,10 @@
 
 Compile Markdown to Vue component.
 
-- 📚 Use Markdown as Vue components
-- 💚 Use Vue components in Markdown
-- ⚡️ Supports Vite, Webpack, Vue CLI and more, powered by [unplugin](https://github.com/unjs/unplugin).
+- 📚 Use Markdown as Vue components.
+- 💚 Use Vue components in Markdown.
+- 🔌 Supports Vite, Webpack, Vue CLI and more, powered by [unplugin](https://github.com/unjs/unplugin).
+- ⚡️ The same transformation as [VitePress](https://vitepress.vuejs.org/).
 
 ## Install
 
@@ -34,15 +35,16 @@ export default defineConfig({
 
 Example: [`examples/vite`](./examples/vite/)
 
-<br></details>
+<br>
+</details>
 
 <details>
 <summary>Webpack</summary><br>
 
 ```ts
 // webpack.config.js
-const { VueLoaderPlugin } = require('vue-loader')
 const Markdown = require('unplugin-vue-markdown/webpack')
+const { VueLoaderPlugin } = require('vue-loader')
 
 module.exports = {
   /* ... */
@@ -62,7 +64,8 @@ module.exports = {
 }
 ```
 
-<br></details>
+<br>
+</details>
 
 <details>
 <summary>Vue CLI</summary><br>
@@ -91,7 +94,8 @@ module.exports = {
 
 Example: [`examples/vue-cli`](./examples/vue-cli/)
 
-<br></details>
+<br>
+</details>
 
 ## Import Markdown as Vue components
 
@@ -144,7 +148,7 @@ import { Counter } from './Counter.vue'
 <Counter :init='5'/>
 ```
 
-Or you can use [`vite-plugin-components`](#work-with-vite-plugin-components) for auto components registration.
+Or you can use [`unplugin-vue-components`](#work-with-unplugin-vue-components) for auto components registration.
 
 ## Frontmatter
 
@@ -198,11 +202,8 @@ export default {
 
 ```js
 // src/main.js
+import { createHead } from '@unhead/vue' // <--
 import { createApp } from 'vue'
-
-import { createHead } from '@unhead/vue'
-
-// <--
 
 const app = createApp(App)
 
@@ -229,9 +230,9 @@ For more options available, please refer to [`@unhead/vue`'s docs](https://unhea
 
 ```ts
 // vite.config.js
-import Markdown from 'unplugin-vue-markdown/vite'
 import MarkdownItAnchor from 'markdown-it-anchor'
 import MarkdownItPrism from 'markdown-it-prism'
+import Markdown from 'unplugin-vue-markdown/vite'
 
 export default {
   plugins: [
@@ -260,7 +261,7 @@ See [the tsdoc](./src/types.ts) for more advanced options
 
 ## Example
 
-See the [/example](./example).
+See the [/examples](./examples).
 
 Or the pre-configured Markdown template [Vitesse](https://github.com/antfu/vitesse).
 
@@ -290,12 +291,12 @@ Put your markdown under `./src/pages/xx.md`, then you can access the page via ro
 
 ### Work with [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components)
 
-`vite-plugin-components` allows you to do on-demand components auto-importing without worrying about registration.
+`unplugin-vue-components` allows you to do on-demand components auto-importing without worrying about registration.
 
 ```ts
 import Vue from '@vitejs/plugin-vue'
-import Markdown from 'unplugin-vue-markdown/vite'
 import Components from 'unplugin-vue-components/vite'
+import Markdown from 'unplugin-vue-markdown/vite'
 
 export default {
   plugins: [
@@ -309,7 +310,7 @@ export default {
       extensions: ['vue', 'md'],
 
       // allow auto import and register components used in markdown
-      customLoaderMatcher: path => path.endsWith('.md'),
+      include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
     })
   ],
 }

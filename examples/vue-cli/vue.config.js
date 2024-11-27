@@ -1,6 +1,6 @@
 const { defineConfig } = require('@vue/cli-service')
-const Markdown = require('unplugin-vue-markdown/webpack')
 const prism = require('markdown-it-prism')
+const Markdown = require('unplugin-vue-markdown/webpack')
 
 module.exports = defineConfig({
   transpileDependencies: true,

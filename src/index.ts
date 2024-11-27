@@ -1,9 +1,9 @@
-import { createFilter } from '@rollup/pluginutils'
 import type { UnpluginFactory } from 'unplugin'
+import type { Options } from './types'
+import { createFilter } from '@rollup/pluginutils'
 import { createUnplugin } from 'unplugin'
 import { createMarkdown } from './core/markdown'
 import { resolveOptions } from './core/options'
-import type { Options } from './types'
 
 const cssIdRE = /\.(css|postcss|sass|scss|less|stylus|styl)($|\?)/
 

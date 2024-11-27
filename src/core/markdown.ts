@@ -1,13 +1,13 @@
-import MarkdownIt from 'markdown-it'
+import type { TransformResult } from 'vite'
+import type { MarkdownEnv, ResolvedOptions } from '../types'
 import { toArray, uniq } from '@antfu/utils'
 import { componentPlugin } from '@mdit-vue/plugin-component'
 import { frontmatterPlugin } from '@mdit-vue/plugin-frontmatter'
-import type { TransformResult } from 'vite'
-import type { MarkdownEnv, ResolvedOptions } from '../types'
+import MarkdownIt from 'markdown-it'
 import { preprocessHead } from './head'
 
-const scriptSetupRE = /<\s*script([^>]*)\bsetup\b([^>]*)>([\s\S]*)<\/script>/mg
-const defineExposeRE = /defineExpose\s*\(/mg
+const scriptSetupRE = /<\s*script([^>]*)\bsetup\b([^>]*)>([\s\S]*)<\/script>/g
+const defineExposeRE = /defineExpose\s*\(/g
 
 const EXPORTS_KEYWORDS = [
   'class',
@@ -52,7 +52,7 @@ function extractScriptSetup(html: string) {
 function extractCustomBlock(html: string, options: ResolvedOptions) {
   const blocks: string[] = []
   for (const tag of options.customSfcBlocks) {
-    html = html.replace(new RegExp(`<${tag}[^>]*\\b[^>]*>[^<>]*<\\/${tag}>`, 'mg'), (code) => {
+    html = html.replace(new RegExp(`<${tag}[^>]*\\b[^>]*>[^<>]*<\\/${tag}>`, 'gm'), (code) => {
       blocks.push(code)
       return ''
     })
@@ -211,25 +211,25 @@ export async function createMarkdown(options: ResolvedOptions) {
 
     const scripts = isVue2
       ? [
-        `<script${attrs}>`,
-        ...scriptLines,
-        ...frontmatterExportsLines,
-        excerptExportsLine,
-        'export default { data() { return { frontmatter } } }',
-        '</script>',
+          `<script${attrs}>`,
+          ...scriptLines,
+          ...frontmatterExportsLines,
+          excerptExportsLine,
+          'export default { data() { return { frontmatter } } }',
+          '</script>',
         ]
       : [
-        `<script setup${attrs}>`,
-        ...scriptLines,
-        '</script>',
-        ...((frontmatterExportsLines.length || excerptExportsLine)
-          ? [
-            `<script${attrs}>`,
-            ...frontmatterExportsLines,
-            excerptExportsLine,
-            '</script>',
-            ]
-          : []),
+          `<script setup${attrs}>`,
+          ...scriptLines,
+          '</script>',
+          ...((frontmatterExportsLines.length || excerptExportsLine)
+            ? [
+                `<script${attrs}>`,
+                ...frontmatterExportsLines,
+                excerptExportsLine,
+                '</script>',
+              ]
+            : []),
         ]
 
     const code = [

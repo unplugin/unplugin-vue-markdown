@@ -35,15 +35,16 @@ export default defineConfig({
 
 Example: [`examples/vite`](./examples/vite/)
 
-<br></details>
+<br>
+</details>
 
 <details>
 <summary>Webpack</summary><br>
 
 ```ts
 // webpack.config.js
-const { VueLoaderPlugin } = require('vue-loader')
 const Markdown = require('unplugin-vue-markdown/webpack')
+const { VueLoaderPlugin } = require('vue-loader')
 
 module.exports = {
   /* ... */
@@ -63,7 +64,8 @@ module.exports = {
 }
 ```
 
-<br></details>
+<br>
+</details>
 
 <details>
 <summary>Vue CLI</summary><br>
@@ -92,7 +94,8 @@ module.exports = {
 
 Example: [`examples/vue-cli`](./examples/vue-cli/)
 
-<br></details>
+<br>
+</details>
 
 ## Import Markdown as Vue components
 
@@ -199,11 +202,8 @@ export default {
 
 ```js
 // src/main.js
+import { createHead } from '@unhead/vue' // <--
 import { createApp } from 'vue'
-
-import { createHead } from '@unhead/vue'
-
-// <--
 
 const app = createApp(App)
 
@@ -230,9 +230,9 @@ For more options available, please refer to [`@unhead/vue`'s docs](https://unhea
 
 ```ts
 // vite.config.js
-import Markdown from 'unplugin-vue-markdown/vite'
 import MarkdownItAnchor from 'markdown-it-anchor'
 import MarkdownItPrism from 'markdown-it-prism'
+import Markdown from 'unplugin-vue-markdown/vite'
 
 export default {
   plugins: [
@@ -295,8 +295,8 @@ Put your markdown under `./src/pages/xx.md`, then you can access the page via ro
 
 ```ts
 import Vue from '@vitejs/plugin-vue'
-import Markdown from 'unplugin-vue-markdown/vite'
 import Components from 'unplugin-vue-components/vite'
+import Markdown from 'unplugin-vue-markdown/vite'
 
 export default {
   plugins: [

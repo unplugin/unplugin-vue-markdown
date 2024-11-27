@@ -1,9 +1,9 @@
-import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
-import Markdown from 'unplugin-vue-markdown/vite'
 import prism from 'markdown-it-prism'
-import Pages from 'vite-plugin-pages'
+import Markdown from 'unplugin-vue-markdown/vite'
+import { defineConfig } from 'vite'
 import Inspect from 'vite-plugin-inspect'
+import Pages from 'vite-plugin-pages'
 
 export default defineConfig({
   plugins: [
@@ -11,6 +11,9 @@ export default defineConfig({
       include: [/\.vue$/, /\.md$/],
     }),
     Markdown({
+      markdownItOptions: {
+
+      },
       headEnabled: true,
       markdownItUses: [
         prism,
