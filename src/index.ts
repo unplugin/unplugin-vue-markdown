@@ -24,7 +24,7 @@ export const unpluginFactory: UnpluginFactory<Options> = (userOptions = {}) => {
     },
     async transform(raw, id) {
       try {
-        return (await markdownToVue)(id, raw)
+        return await markdownToVue(id, raw)
       }
       catch (e: any) {
         this.error(e)
@@ -37,7 +37,7 @@ export const unpluginFactory: UnpluginFactory<Options> = (userOptions = {}) => {
 
         const defaultRead = ctx.read
         ctx.read = async function () {
-          return (await markdownToVue)(ctx.file, await defaultRead()).code
+          return (await markdownToVue(ctx.file, await defaultRead())).code
         }
       },
     },

@@ -4,9 +4,9 @@ import { resolveOptions } from '../src/core/options'
 
 describe('transform', async () => {
   const options = resolveOptions({})
-  const markdownToVue = await createMarkdown(options)
+  const markdownToVue = createMarkdown(options)
 
-  it('basic', () => {
+  it('basic', async () => {
     const md = `---
 title: Hey
 ---
@@ -17,19 +17,19 @@ title: Hey
 - B
 - C
 `
-    expect(markdownToVue('', md).code).toMatchSnapshot()
+    expect((await markdownToVue('', md)).code).toMatchSnapshot()
   })
 
-  it('style', () => {
+  it('style', async () => {
     const md = `
 # Hello
 
 <style>h1 { color: red }</style>
 `
-    expect(markdownToVue('', md).code).toMatchSnapshot()
+    expect((await markdownToVue('', md)).code).toMatchSnapshot()
   })
 
-  it('script setup', () => {
+  it('script setup', async () => {
     const md = `
 # Hello
 
@@ -37,19 +37,19 @@ title: Hey
 import Foo from './Foo.vue'
 </script>
 `
-    expect(markdownToVue('', md).code).toMatchSnapshot()
+    expect((await markdownToVue('', md)).code).toMatchSnapshot()
   })
 
-  it('exposes frontmatter', () => {
+  it('exposes frontmatter', async () => {
     const md = `---
 title: Hey
 ---
 
 # Hello`
-    expect(markdownToVue('', md).code).toMatchSnapshot()
+    expect((await markdownToVue('', md)).code).toMatchSnapshot()
   })
 
-  it('couldn\'t expose frontmatter', () => {
+  it('couldn\'t expose frontmatter', async () => {
     const md = `---
 title: Hey
 ---
@@ -58,10 +58,10 @@ title: Hey
 defineExpose({ test: 'test'})
 </script>
 `
-    expect(markdownToVue('', md).code).toMatchSnapshot()
+    expect((await markdownToVue('', md)).code).toMatchSnapshot()
   })
 
-  it('escapeCodeTagInterpolation', () => {
+  it('escapeCodeTagInterpolation', async () => {
     const md = `
 <div>{{hello}}</div>
 
@@ -69,10 +69,10 @@ defineExpose({ test: 'test'})
 <div>{{hello}}</div>
 \`\`\`
 `
-    expect(markdownToVue('', md).code).toMatchSnapshot()
+    expect((await markdownToVue('', md)).code).toMatchSnapshot()
   })
 
-  it('frontmatter interpolation', () => {
+  it('frontmatter interpolation', async () => {
     const md = `
 ---
 name: 'My Cool App'
@@ -82,10 +82,10 @@ name: 'My Cool App'
 
 This is {{frontmatter.name}}
 `
-    expect(markdownToVue('', md).code).toMatchSnapshot()
+    expect((await markdownToVue('', md)).code).toMatchSnapshot()
   })
 
-  it('vue directives', () => {
+  it('vue directives', async () => {
     const md = `
 ---
 name: 'My Cool App'
@@ -99,10 +99,10 @@ function onClick() {
 
 <button @click="onClick"></button>
 `
-    expect(markdownToVue('', md).code).toMatchSnapshot()
+    expect((await markdownToVue('', md)).code).toMatchSnapshot()
   })
 
-  it('export keyword frontmatters', () => {
+  it('export keyword frontmatters', async () => {
     const md = `
 ---
 class: 'text'
@@ -111,10 +111,10 @@ default: 'foo'
 
 Hello
 `
-    expect(markdownToVue('', md).code).toMatchSnapshot()
+    expect((await markdownToVue('', md)).code).toMatchSnapshot()
   })
 
-  it('code escape', () => {
+  it('code escape', async () => {
     const md = `
 Hello \`{{ world }}\`
 
@@ -122,6 +122,6 @@ Hello \`{{ world }}\`
 console.log(\`{{ world }}\`)
 \`\`\`
 `
-    expect(markdownToVue('', md).code).toMatchSnapshot()
+    expect((await markdownToVue('', md)).code).toMatchSnapshot()
   })
 })
