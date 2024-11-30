@@ -3,7 +3,7 @@ import type { MarkdownEnv, ResolvedOptions } from '../types'
 import { toArray, uniq } from '@antfu/utils'
 import { componentPlugin } from '@mdit-vue/plugin-component'
 import { frontmatterPlugin } from '@mdit-vue/plugin-frontmatter'
-import MarkdownIt from 'markdown-it'
+import MarkdownIt from 'markdown-it-async'
 import { preprocessHead } from './head'
 
 const scriptSetupRE = /<\s*script([^>]*)\bsetup\b([^>]*)>([\s\S]*)<\/script>/g
@@ -61,10 +61,10 @@ function extractCustomBlock(html: string, options: ResolvedOptions) {
   return { html, blocks }
 }
 
-export async function createMarkdown(options: ResolvedOptions) {
+export function createMarkdown(options: ResolvedOptions) {
   const isVue2 = options.vueVersion.startsWith('2.')
 
-  const markdown = new MarkdownIt({
+  const markdown = MarkdownIt({
     html: true,
     linkify: true,
     typographer: true,
@@ -91,9 +91,13 @@ export async function createMarkdown(options: ResolvedOptions) {
     markdown.use(plugin, options)
   })
 
-  await options.markdownItSetup(markdown)
+  const setupPromise = (async () => {
+    await options.markdownItSetup(markdown)
+  })()
 
-  return (id: string, raw: string): TransformResult => {
+  return async (id: string, raw: string): Promise<TransformResult> => {
+    await setupPromise
+
     const {
       wrapperClasses,
       wrapperComponent,
@@ -106,7 +110,7 @@ export async function createMarkdown(options: ResolvedOptions) {
     raw = transforms.before?.(raw, id) ?? raw
 
     const env: MarkdownEnv = { id }
-    let html = markdown.render(raw, env)
+    let html = await markdown.renderAsync(raw, env)
     const { excerpt = '', frontmatter: data = null } = env
 
     const wrapperClassesResolved = toArray(

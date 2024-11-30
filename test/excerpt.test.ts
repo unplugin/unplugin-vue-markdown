@@ -13,7 +13,7 @@ describe('excerpt', () => {
         },
       },
     })
-    const markdownToVue = await createMarkdown(options)
+    const markdownToVue = createMarkdown(options)
     const md = `---
 title: Hey
 ---
@@ -27,7 +27,7 @@ This is an excerpt which has been rendered to **HTML**.
 - A
 - B
 - C`
-    expect(markdownToVue('', md).code).toMatchSnapshot()
+    expect((await markdownToVue('', md)).code).toMatchSnapshot()
   })
 
   it('raw excerpt', async () => {
@@ -41,7 +41,7 @@ This is an excerpt which has been rendered to **HTML**.
         },
       },
     })
-    const markdownToVue = await createMarkdown(options)
+    const markdownToVue = createMarkdown(options)
     const md = `---
 title: Hey
 ---
@@ -55,6 +55,6 @@ This is an excerpt which is kept as **raw Markdown**.
 - A
 - B
 - C`
-    expect(markdownToVue('', md).code).toMatchSnapshot()
+    expect((await markdownToVue('', md)).code).toMatchSnapshot()
   })
 })

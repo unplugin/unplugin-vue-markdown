@@ -18,7 +18,7 @@
     "typescript": "^5.7.2",
     "unplugin-vue-markdown": "workspace:*",
     "vite": "^6.0.1",
-    "vite-plugin-inspect": "^0.8.8",
+    "vite-plugin-inspect": "^0.10.2",
     "vite-plugin-pages": "^0.32.4"
   }
 }

@@ -2,7 +2,12 @@ import type { ComponentPluginOptions } from '@mdit-vue/plugin-component'
 import type { FrontmatterPluginOptions } from '@mdit-vue/plugin-frontmatter'
 import type { MarkdownItEnv } from '@mdit-vue/types'
 import type { FilterPattern } from '@rollup/pluginutils'
-import type MarkdownIt from 'markdown-it'
+import type {
+  MarkdownItAsync,
+  MarkdownItAsyncOptions,
+  PluginSimple as MarkdownItPluginSimple,
+  PluginWithOptions as MarkdownItPluginWithOptions,
+} from 'markdown-it-async'
 import type { preprocessHead } from './core/head'
 
 /** a `<meta />` property in HTML is defined with the following name/values */
@@ -147,14 +152,14 @@ export interface Options {
   /**
    * Options passed to Markdown It
    */
-  markdownItOptions?: MarkdownIt.Options
+  markdownItOptions?: MarkdownItAsyncOptions
 
   /**
    * Plugins for Markdown It
    */
   markdownItUses?: (
-    | MarkdownIt.PluginSimple
-    | [MarkdownIt.PluginSimple | MarkdownIt.PluginWithOptions<any>, any]
+    | MarkdownItPluginSimple
+    | [MarkdownItPluginSimple | MarkdownItPluginWithOptions<any>, any]
     | any
   )[]
 
@@ -162,7 +167,7 @@ export interface Options {
    * A function providing the Markdown It instance gets the ability to apply custom
    * settings/plugins
    */
-  markdownItSetup?: (MarkdownIt: MarkdownIt) => void | Promise<void>
+  markdownItSetup?: (MarkdownIt: MarkdownItAsync) => void | Promise<void>
 
   /**
    * Class names for wrapper div
