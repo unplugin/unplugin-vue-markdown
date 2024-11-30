@@ -52,7 +52,7 @@ function extractScriptSetup(html: string) {
 function extractCustomBlock(html: string, options: ResolvedOptions) {
   const blocks: string[] = []
   for (const tag of options.customSfcBlocks) {
-    html = html.replace(new RegExp(`<${tag}[^>]*\\b[^>]*>[^<>]*<\\/${tag}>`, 'gm'), (code) => {
+    html = html.replace(new RegExp(`<${tag}[^>]*\\b[^>]*>[^<]*<\\/${tag}>`, 'gm'), (code) => {
       blocks.push(code)
       return ''
     })
