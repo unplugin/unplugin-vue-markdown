@@ -9,7 +9,7 @@ exports[`transform > basic 1`] = `
 </ul>
 </div></template>
 <script setup>
-const frontmatter = {"title":"Hey"}
+const frontmatter = defineProps({title:{default:\`Hey\`},})
 defineExpose({ frontmatter })
 </script>
 <script>
@@ -23,7 +23,7 @@ exports[`transform > code escape 1`] = `
 </code></pre>
 </div></template>
 <script setup>
-const frontmatter = {}
+const frontmatter = defineProps({})
 defineExpose({ frontmatter })
 </script>"
 `;
@@ -32,7 +32,7 @@ exports[`transform > couldn't expose frontmatter 1`] = `
 "<template><div class="markdown-body">
 </div></template>
 <script setup>
-const frontmatter = {"title":"Hey"}
+const frontmatter = defineProps({title:{default:\`Hey\`},})
 defineExpose({ test: 'test'})
 </script>
 <script>
@@ -46,7 +46,7 @@ exports[`transform > escapeCodeTagInterpolation 1`] = `
 </code></pre>
 </div></template>
 <script setup>
-const frontmatter = {}
+const frontmatter = defineProps({})
 defineExpose({ frontmatter })
 </script>"
 `;
@@ -55,7 +55,7 @@ exports[`transform > export keyword frontmatters 1`] = `
 "<template><div class="markdown-body"><p>Hello</p>
 </div></template>
 <script setup>
-const frontmatter = {"class":"text","default":"foo"}
+const frontmatter = defineProps({class:{default:\`text\`},default:{default:\`foo\`},})
 defineExpose({ frontmatter })
 </script>
 <script>
@@ -68,7 +68,7 @@ exports[`transform > exposes frontmatter 1`] = `
 "<template><div class="markdown-body"><h1>Hello</h1>
 </div></template>
 <script setup>
-const frontmatter = {"title":"Hey"}
+const frontmatter = defineProps({title:{default:\`Hey\`},})
 defineExpose({ frontmatter })
 </script>
 <script>
@@ -81,7 +81,7 @@ exports[`transform > frontmatter interpolation 1`] = `
 <p>This is {{frontmatter.name}}</p>
 </div></template>
 <script setup>
-const frontmatter = {"name":"My Cool App"}
+const frontmatter = defineProps({name:{default:\`My Cool App\`},})
 defineExpose({ frontmatter })
 </script>
 <script>
@@ -94,7 +94,7 @@ exports[`transform > script setup 1`] = `
 
 </div></template>
 <script setup lang="ts">
-const frontmatter = {}
+const frontmatter = defineProps({})
 defineExpose({ frontmatter })
 import Foo from './Foo.vue'
 </script>"
@@ -105,7 +105,7 @@ exports[`transform > style 1`] = `
 
 </div></template>
 <script setup>
-const frontmatter = {}
+const frontmatter = defineProps({})
 defineExpose({ frontmatter })
 </script>
 <style>h1 { color: red }</style>"
@@ -116,7 +116,7 @@ exports[`transform > vue directives 1`] = `
 <p><button @click="onClick"></button></p>
 </div></template>
 <script setup lang="ts">
-const frontmatter = {"name":"My Cool App"}
+const frontmatter = defineProps({name:{default:\`My Cool App\`},})
 defineExpose({ frontmatter })
 function onClick() {
   // ...

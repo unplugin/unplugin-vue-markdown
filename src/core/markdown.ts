@@ -61,6 +61,24 @@ function extractCustomBlock(html: string, options: ResolvedOptions) {
   return { html, blocks }
 }
 
+function createDefinePropsWithDefaults(props: {
+  [s: string]: unknown
+}) {
+  const propsValue = Object
+    .entries(props)
+    .reduce((acc, [key, cur]) => `${acc}${key}:{default:${getPropsDefaultValue(cur)}},`, ``)
+
+  return `defineProps({${propsValue}})`
+}
+
+function getPropsDefaultValue<T = unknown>(value: T) {
+  return typeof value === 'string'
+    ? `\`${value}\``
+    : typeof value === 'object'
+      ? JSON.stringify(value)
+      : value
+}
+
 export function createMarkdown(options: ResolvedOptions) {
   const isVue2 = options.vueVersion.startsWith('2.')
 
@@ -171,7 +189,7 @@ export function createMarkdown(options: ResolvedOptions) {
       if (options.excerpt && !excerptKeyOverlapping && frontmatter.excerpt !== undefined)
         delete frontmatter.excerpt
 
-      scriptLines.push(`const frontmatter = ${JSON.stringify(frontmatter)}`)
+      scriptLines.push(`const frontmatter = ${createDefinePropsWithDefaults(frontmatter)}`)
 
       if (options.exportFrontmatter) {
         frontmatterExportsLines = Object.entries(frontmatter)
