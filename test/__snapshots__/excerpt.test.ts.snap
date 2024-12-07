@@ -11,7 +11,7 @@ exports[`excerpt > raw excerpt 1`] = `
 </ul>
 </div></template>
 <script setup>
-const frontmatter = {"title":"Hey"}
+const frontmatter = defineProps({title:{default:\`Hey\`},})
 defineExpose({ frontmatter })
 const excerpt = "\\nThis is an excerpt which is kept as **raw Markdown**.\\n\\n"
 </script>
@@ -32,7 +32,7 @@ exports[`excerpt > rendered excerpt 1`] = `
 </ul>
 </div></template>
 <script setup>
-const frontmatter = {"title":"Hey"}
+const frontmatter = defineProps({title:{default:\`Hey\`},})
 defineExpose({ frontmatter })
 const excerpt = "<p>This is an excerpt which has been rendered to <strong>HTML</strong>.</p>\\n"
 </script>
