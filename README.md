@@ -173,6 +173,24 @@ Will be rendered as
 <p>This is My Cool App</p>
 ```
 
+You can override the existing frontmatter values by passing a props value to the component.
+
+```html
+<template>
+  <HelloWorld name="My Awesome App"  />
+</template>
+
+<script>
+import HelloWorld from './README.md'
+
+export default {
+  components: {
+    HelloWorld,
+  },
+}
+</script>
+```
+
 It will also be passed to the wrapper component's props if you have set `wrapperComponent` option.
 
 ## Document head and meta
