@@ -173,7 +173,7 @@ export function createMarkdown(options: ResolvedOptions) {
 
       scriptLines.push(
         `import { computed } from 'vue'`,
-        `const props = ${`defineProps({ frontmatterMerge: { default: ${JSON.stringify(frontmatter)} } })`}`,
+        'const props = defineProps({ frontmatterMerge: { type: Object } })',
         `const _frontmatter = ${JSON.stringify(frontmatter)}`,
         'const frontmatter = computed(() => ({ ..._frontmatter, ...props.frontmatterMerge }))',
       )

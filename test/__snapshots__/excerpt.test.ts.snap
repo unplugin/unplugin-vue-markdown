@@ -12,7 +12,7 @@ exports[`excerpt > raw excerpt 1`] = `
 </div></template>
 <script setup>
 import { computed } from 'vue'
-const props = defineProps({ frontmatterMerge: { default: {"title":"Hey"} } })
+const props = defineProps({ frontmatterMerge: { type: Object } })
 const _frontmatter = {"title":"Hey"}
 const frontmatter = computed(() => ({ ..._frontmatter, ...props.frontmatterMerge }))
 defineExpose({ frontmatter: _frontmatter })
@@ -36,7 +36,7 @@ exports[`excerpt > rendered excerpt 1`] = `
 </div></template>
 <script setup>
 import { computed } from 'vue'
-const props = defineProps({ frontmatterMerge: { default: {"title":"Hey"} } })
+const props = defineProps({ frontmatterMerge: { type: Object } })
 const _frontmatter = {"title":"Hey"}
 const frontmatter = computed(() => ({ ..._frontmatter, ...props.frontmatterMerge }))
 defineExpose({ frontmatter: _frontmatter })
