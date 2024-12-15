@@ -174,8 +174,7 @@ export function createMarkdown(options: ResolvedOptions) {
       scriptLines.push(
         `import { computed } from 'vue'`,
         'const props = defineProps({ frontmatterMerge: { type: Object } })',
-        `const _frontmatter = ${JSON.stringify(frontmatter)}`,
-        'const frontmatter = computed(() => ({ ..._frontmatter, ...props.frontmatterMerge }))',
+        `const frontmatter = computed(() => ({ ...${JSON.stringify(frontmatter)}, ...props.frontmatterMerge }))`,
       )
 
       if (options.exportFrontmatter) {
@@ -188,7 +187,7 @@ export function createMarkdown(options: ResolvedOptions) {
       }
 
       if (!isVue2 && options.exposeFrontmatter && !hasExplicitExports())
-        scriptLines.push('defineExpose({ frontmatter: _frontmatter })')
+        scriptLines.push('defineExpose({ frontmatter: frontmatter.value })')
 
       if (!isVue2 && headEnabled && head) {
         // @ts-expect-error legacy option

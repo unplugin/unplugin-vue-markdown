@@ -11,9 +11,8 @@ exports[`transform > basic 1`] = `
 <script setup>
 import { computed } from 'vue'
 const props = defineProps({ frontmatterMerge: { type: Object } })
-const _frontmatter = {"title":"Hey"}
-const frontmatter = computed(() => ({ ..._frontmatter, ...props.frontmatterMerge }))
-defineExpose({ frontmatter: _frontmatter })
+const frontmatter = computed(() => ({ ...{"title":"Hey"}, ...props.frontmatterMerge }))
+defineExpose({ frontmatter: frontmatter.value })
 </script>
 <script>
 export const title = "Hey"
@@ -28,9 +27,8 @@ exports[`transform > code escape 1`] = `
 <script setup>
 import { computed } from 'vue'
 const props = defineProps({ frontmatterMerge: { type: Object } })
-const _frontmatter = {}
-const frontmatter = computed(() => ({ ..._frontmatter, ...props.frontmatterMerge }))
-defineExpose({ frontmatter: _frontmatter })
+const frontmatter = computed(() => ({ ...{}, ...props.frontmatterMerge }))
+defineExpose({ frontmatter: frontmatter.value })
 </script>"
 `;
 
@@ -40,8 +38,7 @@ exports[`transform > couldn't expose frontmatter 1`] = `
 <script setup>
 import { computed } from 'vue'
 const props = defineProps({ frontmatterMerge: { type: Object } })
-const _frontmatter = {"title":"Hey"}
-const frontmatter = computed(() => ({ ..._frontmatter, ...props.frontmatterMerge }))
+const frontmatter = computed(() => ({ ...{"title":"Hey"}, ...props.frontmatterMerge }))
 defineExpose({ test: 'test'})
 </script>
 <script>
@@ -57,9 +54,8 @@ exports[`transform > escapeCodeTagInterpolation 1`] = `
 <script setup>
 import { computed } from 'vue'
 const props = defineProps({ frontmatterMerge: { type: Object } })
-const _frontmatter = {}
-const frontmatter = computed(() => ({ ..._frontmatter, ...props.frontmatterMerge }))
-defineExpose({ frontmatter: _frontmatter })
+const frontmatter = computed(() => ({ ...{}, ...props.frontmatterMerge }))
+defineExpose({ frontmatter: frontmatter.value })
 </script>"
 `;
 
@@ -69,9 +65,8 @@ exports[`transform > export keyword frontmatters 1`] = `
 <script setup>
 import { computed } from 'vue'
 const props = defineProps({ frontmatterMerge: { type: Object } })
-const _frontmatter = {"class":"text","default":"foo"}
-const frontmatter = computed(() => ({ ..._frontmatter, ...props.frontmatterMerge }))
-defineExpose({ frontmatter: _frontmatter })
+const frontmatter = computed(() => ({ ...{"class":"text","default":"foo"}, ...props.frontmatterMerge }))
+defineExpose({ frontmatter: frontmatter.value })
 </script>
 <script>
 export const _class = "text"
@@ -85,9 +80,8 @@ exports[`transform > exposes frontmatter 1`] = `
 <script setup>
 import { computed } from 'vue'
 const props = defineProps({ frontmatterMerge: { type: Object } })
-const _frontmatter = {"title":"Hey"}
-const frontmatter = computed(() => ({ ..._frontmatter, ...props.frontmatterMerge }))
-defineExpose({ frontmatter: _frontmatter })
+const frontmatter = computed(() => ({ ...{"title":"Hey"}, ...props.frontmatterMerge }))
+defineExpose({ frontmatter: frontmatter.value })
 </script>
 <script>
 export const title = "Hey"
@@ -101,9 +95,8 @@ exports[`transform > frontmatter interpolation 1`] = `
 <script setup>
 import { computed } from 'vue'
 const props = defineProps({ frontmatterMerge: { type: Object } })
-const _frontmatter = {"name":"My Cool App"}
-const frontmatter = computed(() => ({ ..._frontmatter, ...props.frontmatterMerge }))
-defineExpose({ frontmatter: _frontmatter })
+const frontmatter = computed(() => ({ ...{"name":"My Cool App"}, ...props.frontmatterMerge }))
+defineExpose({ frontmatter: frontmatter.value })
 </script>
 <script>
 export const name = "My Cool App"
@@ -117,9 +110,8 @@ exports[`transform > script setup 1`] = `
 <script setup lang="ts">
 import { computed } from 'vue'
 const props = defineProps({ frontmatterMerge: { type: Object } })
-const _frontmatter = {}
-const frontmatter = computed(() => ({ ..._frontmatter, ...props.frontmatterMerge }))
-defineExpose({ frontmatter: _frontmatter })
+const frontmatter = computed(() => ({ ...{}, ...props.frontmatterMerge }))
+defineExpose({ frontmatter: frontmatter.value })
 import Foo from './Foo.vue'
 </script>"
 `;
@@ -131,9 +123,8 @@ exports[`transform > style 1`] = `
 <script setup>
 import { computed } from 'vue'
 const props = defineProps({ frontmatterMerge: { type: Object } })
-const _frontmatter = {}
-const frontmatter = computed(() => ({ ..._frontmatter, ...props.frontmatterMerge }))
-defineExpose({ frontmatter: _frontmatter })
+const frontmatter = computed(() => ({ ...{}, ...props.frontmatterMerge }))
+defineExpose({ frontmatter: frontmatter.value })
 </script>
 <style>h1 { color: red }</style>"
 `;
@@ -145,9 +136,8 @@ exports[`transform > vue directives 1`] = `
 <script setup lang="ts">
 import { computed } from 'vue'
 const props = defineProps({ frontmatterMerge: { type: Object } })
-const _frontmatter = {"name":"My Cool App"}
-const frontmatter = computed(() => ({ ..._frontmatter, ...props.frontmatterMerge }))
-defineExpose({ frontmatter: _frontmatter })
+const frontmatter = computed(() => ({ ...{"name":"My Cool App"}, ...props.frontmatterMerge }))
+defineExpose({ frontmatter: frontmatter.value })
 function onClick() {
   // ...
 }
