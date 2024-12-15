@@ -11,7 +11,15 @@ exports[`transform > basic 1`] = `
 <script setup>
 import { computed } from 'vue'
 const props = defineProps({ frontmatterMerge: { type: Object } })
-const frontmatter = computed(() => ({ ...{"title":"Hey"}, ...props.frontmatterMerge }))
+const _frontmatter = {"title":"Hey"}
+const frontmatter = computed(() => {
+  if (props.frontmatterReplace && typeof props.frontmatterReplace === 'object') {
+    const replaceKeys = Object.keys(props.frontmatterReplace)
+    return Object.entries(_frontmatter).reduce((acc, [key, value]) => ({ ...acc, [key]: replaceKeys.includes(key) ? value : undefined }), {})
+  }
+
+  return { ..._frontmatter, ...props.frontmatterMerge }
+})
 defineExpose({ frontmatter: frontmatter.value })
 </script>
 <script>
@@ -27,7 +35,15 @@ exports[`transform > code escape 1`] = `
 <script setup>
 import { computed } from 'vue'
 const props = defineProps({ frontmatterMerge: { type: Object } })
-const frontmatter = computed(() => ({ ...{}, ...props.frontmatterMerge }))
+const _frontmatter = {}
+const frontmatter = computed(() => {
+  if (props.frontmatterReplace && typeof props.frontmatterReplace === 'object') {
+    const replaceKeys = Object.keys(props.frontmatterReplace)
+    return Object.entries(_frontmatter).reduce((acc, [key, value]) => ({ ...acc, [key]: replaceKeys.includes(key) ? value : undefined }), {})
+  }
+
+  return { ..._frontmatter, ...props.frontmatterMerge }
+})
 defineExpose({ frontmatter: frontmatter.value })
 </script>"
 `;
@@ -38,7 +54,15 @@ exports[`transform > couldn't expose frontmatter 1`] = `
 <script setup>
 import { computed } from 'vue'
 const props = defineProps({ frontmatterMerge: { type: Object } })
-const frontmatter = computed(() => ({ ...{"title":"Hey"}, ...props.frontmatterMerge }))
+const _frontmatter = {"title":"Hey"}
+const frontmatter = computed(() => {
+  if (props.frontmatterReplace && typeof props.frontmatterReplace === 'object') {
+    const replaceKeys = Object.keys(props.frontmatterReplace)
+    return Object.entries(_frontmatter).reduce((acc, [key, value]) => ({ ...acc, [key]: replaceKeys.includes(key) ? value : undefined }), {})
+  }
+
+  return { ..._frontmatter, ...props.frontmatterMerge }
+})
 defineExpose({ test: 'test'})
 </script>
 <script>
@@ -54,7 +78,15 @@ exports[`transform > escapeCodeTagInterpolation 1`] = `
 <script setup>
 import { computed } from 'vue'
 const props = defineProps({ frontmatterMerge: { type: Object } })
-const frontmatter = computed(() => ({ ...{}, ...props.frontmatterMerge }))
+const _frontmatter = {}
+const frontmatter = computed(() => {
+  if (props.frontmatterReplace && typeof props.frontmatterReplace === 'object') {
+    const replaceKeys = Object.keys(props.frontmatterReplace)
+    return Object.entries(_frontmatter).reduce((acc, [key, value]) => ({ ...acc, [key]: replaceKeys.includes(key) ? value : undefined }), {})
+  }
+
+  return { ..._frontmatter, ...props.frontmatterMerge }
+})
 defineExpose({ frontmatter: frontmatter.value })
 </script>"
 `;
@@ -65,7 +97,15 @@ exports[`transform > export keyword frontmatters 1`] = `
 <script setup>
 import { computed } from 'vue'
 const props = defineProps({ frontmatterMerge: { type: Object } })
-const frontmatter = computed(() => ({ ...{"class":"text","default":"foo"}, ...props.frontmatterMerge }))
+const _frontmatter = {"class":"text","default":"foo"}
+const frontmatter = computed(() => {
+  if (props.frontmatterReplace && typeof props.frontmatterReplace === 'object') {
+    const replaceKeys = Object.keys(props.frontmatterReplace)
+    return Object.entries(_frontmatter).reduce((acc, [key, value]) => ({ ...acc, [key]: replaceKeys.includes(key) ? value : undefined }), {})
+  }
+
+  return { ..._frontmatter, ...props.frontmatterMerge }
+})
 defineExpose({ frontmatter: frontmatter.value })
 </script>
 <script>
@@ -80,7 +120,15 @@ exports[`transform > exposes frontmatter 1`] = `
 <script setup>
 import { computed } from 'vue'
 const props = defineProps({ frontmatterMerge: { type: Object } })
-const frontmatter = computed(() => ({ ...{"title":"Hey"}, ...props.frontmatterMerge }))
+const _frontmatter = {"title":"Hey"}
+const frontmatter = computed(() => {
+  if (props.frontmatterReplace && typeof props.frontmatterReplace === 'object') {
+    const replaceKeys = Object.keys(props.frontmatterReplace)
+    return Object.entries(_frontmatter).reduce((acc, [key, value]) => ({ ...acc, [key]: replaceKeys.includes(key) ? value : undefined }), {})
+  }
+
+  return { ..._frontmatter, ...props.frontmatterMerge }
+})
 defineExpose({ frontmatter: frontmatter.value })
 </script>
 <script>
@@ -95,7 +143,15 @@ exports[`transform > frontmatter interpolation 1`] = `
 <script setup>
 import { computed } from 'vue'
 const props = defineProps({ frontmatterMerge: { type: Object } })
-const frontmatter = computed(() => ({ ...{"name":"My Cool App"}, ...props.frontmatterMerge }))
+const _frontmatter = {"name":"My Cool App"}
+const frontmatter = computed(() => {
+  if (props.frontmatterReplace && typeof props.frontmatterReplace === 'object') {
+    const replaceKeys = Object.keys(props.frontmatterReplace)
+    return Object.entries(_frontmatter).reduce((acc, [key, value]) => ({ ...acc, [key]: replaceKeys.includes(key) ? value : undefined }), {})
+  }
+
+  return { ..._frontmatter, ...props.frontmatterMerge }
+})
 defineExpose({ frontmatter: frontmatter.value })
 </script>
 <script>
@@ -110,7 +166,15 @@ exports[`transform > script setup 1`] = `
 <script setup lang="ts">
 import { computed } from 'vue'
 const props = defineProps({ frontmatterMerge: { type: Object } })
-const frontmatter = computed(() => ({ ...{}, ...props.frontmatterMerge }))
+const _frontmatter = {}
+const frontmatter = computed(() => {
+  if (props.frontmatterReplace && typeof props.frontmatterReplace === 'object') {
+    const replaceKeys = Object.keys(props.frontmatterReplace)
+    return Object.entries(_frontmatter).reduce((acc, [key, value]) => ({ ...acc, [key]: replaceKeys.includes(key) ? value : undefined }), {})
+  }
+
+  return { ..._frontmatter, ...props.frontmatterMerge }
+})
 defineExpose({ frontmatter: frontmatter.value })
 import Foo from './Foo.vue'
 </script>"
@@ -123,7 +187,15 @@ exports[`transform > style 1`] = `
 <script setup>
 import { computed } from 'vue'
 const props = defineProps({ frontmatterMerge: { type: Object } })
-const frontmatter = computed(() => ({ ...{}, ...props.frontmatterMerge }))
+const _frontmatter = {}
+const frontmatter = computed(() => {
+  if (props.frontmatterReplace && typeof props.frontmatterReplace === 'object') {
+    const replaceKeys = Object.keys(props.frontmatterReplace)
+    return Object.entries(_frontmatter).reduce((acc, [key, value]) => ({ ...acc, [key]: replaceKeys.includes(key) ? value : undefined }), {})
+  }
+
+  return { ..._frontmatter, ...props.frontmatterMerge }
+})
 defineExpose({ frontmatter: frontmatter.value })
 </script>
 <style>h1 { color: red }</style>"
@@ -136,7 +208,15 @@ exports[`transform > vue directives 1`] = `
 <script setup lang="ts">
 import { computed } from 'vue'
 const props = defineProps({ frontmatterMerge: { type: Object } })
-const frontmatter = computed(() => ({ ...{"name":"My Cool App"}, ...props.frontmatterMerge }))
+const _frontmatter = {"name":"My Cool App"}
+const frontmatter = computed(() => {
+  if (props.frontmatterReplace && typeof props.frontmatterReplace === 'object') {
+    const replaceKeys = Object.keys(props.frontmatterReplace)
+    return Object.entries(_frontmatter).reduce((acc, [key, value]) => ({ ...acc, [key]: replaceKeys.includes(key) ? value : undefined }), {})
+  }
+
+  return { ..._frontmatter, ...props.frontmatterMerge }
+})
 defineExpose({ frontmatter: frontmatter.value })
 function onClick() {
   // ...
