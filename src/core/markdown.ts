@@ -61,24 +61,6 @@ function extractCustomBlock(html: string, options: ResolvedOptions) {
   return { html, blocks }
 }
 
-function createDefinePropsWithDefaults(props: {
-  [s: string]: unknown
-}) {
-  const propsValue = Object
-    .entries(props)
-    .reduce((acc, [key, cur]) => `${acc}${key}:{default:${getPropsDefaultValue(cur)}},`, ``)
-
-  return `defineProps({${propsValue}})`
-}
-
-function getPropsDefaultValue<T = unknown>(value: T) {
-  return typeof value === 'string'
-    ? `\`${value}\``
-    : typeof value === 'object'
-      ? JSON.stringify(value)
-      : value
-}
-
 export function createMarkdown(options: ResolvedOptions) {
   const isVue2 = options.vueVersion.startsWith('2.')
 
@@ -189,7 +171,12 @@ export function createMarkdown(options: ResolvedOptions) {
       if (options.excerpt && !excerptKeyOverlapping && frontmatter.excerpt !== undefined)
         delete frontmatter.excerpt
 
-      scriptLines.push(`const frontmatter = ${createDefinePropsWithDefaults(frontmatter)}`)
+      scriptLines.push(
+        `import { computed } from 'vue'`,
+        `const props = ${`defineProps({ frontmatterMerge: { default: ${JSON.stringify(frontmatter)} } })`}`,
+        `const _frontmatter = ${JSON.stringify(frontmatter)}`,
+        'const frontmatter = computed(() => ({ ..._frontmatter, ...props.frontmatterMerge }))',
+      )
 
       if (options.exportFrontmatter) {
         frontmatterExportsLines = Object.entries(frontmatter)
@@ -201,7 +188,7 @@ export function createMarkdown(options: ResolvedOptions) {
       }
 
       if (!isVue2 && options.exposeFrontmatter && !hasExplicitExports())
-        scriptLines.push('defineExpose({ frontmatter })')
+        scriptLines.push('defineExpose({ frontmatter: _frontmatter })')
 
       if (!isVue2 && headEnabled && head) {
         // @ts-expect-error legacy option

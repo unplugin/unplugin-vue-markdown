@@ -11,8 +11,11 @@ exports[`excerpt > raw excerpt 1`] = `
 </ul>
 </div></template>
 <script setup>
-const frontmatter = defineProps({title:{default:\`Hey\`},})
-defineExpose({ frontmatter })
+import { computed } from 'vue'
+const props = defineProps({ frontmatterMerge: { default: {"title":"Hey"} } })
+const _frontmatter = {"title":"Hey"}
+const frontmatter = computed(() => ({ ..._frontmatter, ...props.frontmatterMerge }))
+defineExpose({ frontmatter: _frontmatter })
 const excerpt = "\\nThis is an excerpt which is kept as **raw Markdown**.\\n\\n"
 </script>
 <script>
@@ -32,8 +35,11 @@ exports[`excerpt > rendered excerpt 1`] = `
 </ul>
 </div></template>
 <script setup>
-const frontmatter = defineProps({title:{default:\`Hey\`},})
-defineExpose({ frontmatter })
+import { computed } from 'vue'
+const props = defineProps({ frontmatterMerge: { default: {"title":"Hey"} } })
+const _frontmatter = {"title":"Hey"}
+const frontmatter = computed(() => ({ ..._frontmatter, ...props.frontmatterMerge }))
+defineExpose({ frontmatter: _frontmatter })
 const excerpt = "<p>This is an excerpt which has been rendered to <strong>HTML</strong>.</p>\\n"
 </script>
 <script>
