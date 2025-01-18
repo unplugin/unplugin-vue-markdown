@@ -107,7 +107,7 @@ export function createMarkdown(options: ResolvedOptions) {
     } = options
 
     raw = raw.trimStart()
-    raw = transforms.before?.(raw, id) ?? raw
+    raw = await transforms.before?.(raw, id) ?? raw
 
     const env: MarkdownEnv = { id }
     let html = await markdown.renderAsync(raw, env)
@@ -138,7 +138,7 @@ export function createMarkdown(options: ResolvedOptions) {
       html = `<${wrapperComponentName} ${attrs}>${html}</${wrapperComponentName}>`
     }
 
-    html = transforms.after?.(html, id) ?? html
+    html = await transforms.after?.(html, id) ?? html
 
     if (options.escapeCodeTagInterpolation) {
       // escape curly brackets interpolation in <code>, #14
@@ -194,7 +194,7 @@ export function createMarkdown(options: ResolvedOptions) {
         scriptLines.push('useHead(head)')
       }
 
-      scriptLines.push(...transforms.extraScripts?.(frontmatter, id) || [])
+      scriptLines.push(...await transforms.extraScripts?.(frontmatter, id) || [])
     }
 
     if (options.excerpt) {
