@@ -159,6 +159,7 @@ For example:
 ```md
 ---
 name: My Cool App
+description: This is My Cool App
 ---
 
 # Hello World
@@ -170,8 +171,48 @@ Will be rendered as
 
 ```html
 <h1>Hello World</h1>
-<p>This is My Cool App</p>
+<p>{{frontmatter.description}}</p>
 ```
+
+You can override existing frontmatter values by passing the :frontmatter-merge prop to the component.
+
+```html
+<template>
+  <HelloWorld :frontmatter-merge="{ name: 'My Awesome App' }" />
+</template>
+
+<script>
+import HelloWorld from './README.md'
+
+export default {
+  components: {
+    HelloWorld,
+  },
+}
+</script>
+```
+
+Alternatively, you can replace all frontmatter values using the `:frontmatter-replace` prop. Any remaining frontmatter properties will not render and will be `undefined`.
+
+```html
+<template>
+  <HelloWorld :frontmatter-replace="{ name: 'My Super App' }" />
+</template>
+
+<script>
+import HelloWorld from './README.md'
+
+export default {
+  components: {
+    HelloWorld,
+  },
+}
+</script>
+```
+
+For example, if you use `:frontmatter-replace`, the `description` property will not be shown on the screen.
+
+> Use either `:frontmatter-merge` or `:frontmatter-replace` for a component. If both props are provided, only `:frontmatter-replace` will take effect.
 
 It will also be passed to the wrapper component's props if you have set `wrapperComponent` option.
 
