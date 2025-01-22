@@ -3,7 +3,6 @@ import type { MarkdownEnv, ResolvedOptions } from '../types'
 import { toArray, uniq } from '@antfu/utils'
 import { componentPlugin } from '@mdit-vue/plugin-component'
 import { frontmatterPlugin } from '@mdit-vue/plugin-frontmatter'
-import MarkdownIt from 'markdown-it-async'
 import { preprocessHead } from './head'
 
 const scriptSetupRE = /<\s*script([^>]*)\bsetup\b([^>]*)>([\s\S]*)<\/script>/g
@@ -64,39 +63,43 @@ function extractCustomBlock(html: string, options: ResolvedOptions) {
 export function createMarkdown(options: ResolvedOptions) {
   const isVue2 = options.vueVersion.startsWith('2.')
 
-  const markdown = MarkdownIt({
-    html: true,
-    linkify: true,
-    typographer: true,
-    ...options.markdownItOptions,
-  })
-
-  markdown.use(componentPlugin, options.componentOptions)
-
-  if (options.frontmatter || options.excerpt) {
-    markdown.use(frontmatterPlugin, {
-      ...options.frontmatterOptions,
-      grayMatterOptions: {
-        excerpt: options.excerpt,
-        ...options.frontmatterOptions.grayMatterOptions,
-      },
-    })
-  }
-
-  markdown.linkify.set({ fuzzyLink: false })
-
-  options.markdownItUses.forEach((e) => {
-    const [plugin, options] = toArray(e)
-
-    markdown.use(plugin, options)
-  })
-
   const setupPromise = (async () => {
-    await options.markdownItSetup(markdown)
+    const { default: MarkdownIt } = await import('markdown-it-async')
+
+    const md = MarkdownIt({
+      html: true,
+      linkify: true,
+      typographer: true,
+      ...options.markdownItOptions,
+    })
+
+    md.use(componentPlugin, options.componentOptions)
+
+    if (options.frontmatter || options.excerpt) {
+      md.use(frontmatterPlugin, {
+        ...options.frontmatterOptions,
+        grayMatterOptions: {
+          excerpt: options.excerpt,
+          ...options.frontmatterOptions.grayMatterOptions,
+        },
+      })
+    }
+
+    md.linkify.set({ fuzzyLink: false })
+
+    options.markdownItUses.forEach((e) => {
+      const [plugin, options] = toArray(e)
+
+      md.use(plugin, options)
+    })
+
+    await options.markdownItSetup(md)
+
+    return md
   })()
 
   return async (id: string, raw: string): Promise<TransformResult> => {
-    await setupPromise
+    const md = await setupPromise
 
     const {
       wrapperClasses,
@@ -110,7 +113,7 @@ export function createMarkdown(options: ResolvedOptions) {
     raw = await transforms.before?.(raw, id) ?? raw
 
     const env: MarkdownEnv = { id }
-    let html = await markdown.renderAsync(raw, env)
+    let html = await md.renderAsync(raw, env)
     const { excerpt = '', frontmatter: data = null } = env
 
     const wrapperClassesResolved = toArray(
