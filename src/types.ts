@@ -170,6 +170,13 @@ export interface Options {
   markdownItSetup?: (MarkdownIt: MarkdownItAsync) => void | Promise<void>
 
   /**
+   * Wrap the html in a div
+   *
+   * @default true
+   */
+  wrapperDiv?: boolean
+
+  /**
    * Class names for wrapper div
    *
    * @default 'markdown-body'
@@ -199,7 +206,7 @@ export interface Options {
   exclude?: FilterPattern
 }
 
-export interface ResolvedOptions extends Required<Options> {}
+export interface ResolvedOptions extends Required<Options> { }
 
 export interface MarkdownEnv extends MarkdownItEnv {
   id: string
