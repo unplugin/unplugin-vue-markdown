@@ -17,6 +17,7 @@ export function resolveOptions(userOptions: Options): ResolvedOptions {
     markdownItOptions: {},
     markdownItUses: [],
     markdownItSetup: () => {},
+    wrapperDiv: true,
     wrapperComponent: null,
     transforms: {},
     vueVersion: userOptions.vueVersion || getVueVersion(),
