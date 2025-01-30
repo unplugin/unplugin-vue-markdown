@@ -170,7 +170,7 @@ export interface Options {
   markdownItSetup?: (MarkdownIt: MarkdownItAsync) => void | Promise<void>
 
   /**
-   * Wrap the html in a div
+   * Wrap the rendered html in a div
    *
    * @default true
    */
@@ -178,6 +178,8 @@ export interface Options {
 
   /**
    * Class names for wrapper div
+   *
+   * This option will be ignored if `wrapperDiv` is set to `false`
    *
    * @default 'markdown-body'
    */
