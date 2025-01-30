@@ -184,7 +184,7 @@ export interface Options {
   wrapperClasses?: string | string[] | undefined | null | ((id: string, code: string) => string | string[] | undefined | null)
 
   /**
-   * Component name to wrap with (will wrap the wrapperDiv if present)
+   * Component name to wrapper with
    *
    * @default undefined
    */
