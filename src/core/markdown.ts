@@ -177,7 +177,19 @@ export function createMarkdown(options: ResolvedOptions) {
       if (options.excerpt && !excerptKeyOverlapping && frontmatter.excerpt !== undefined)
         delete frontmatter.excerpt
 
-      scriptLines.push(`const frontmatter = ${JSON.stringify(frontmatter)}`)
+      scriptLines.push(
+        `import { computed } from 'vue'`,
+        'const props = defineProps({ frontmatterMerge: { type: Object } })',
+        `const _frontmatter = ${JSON.stringify(frontmatter)}`,
+        `const frontmatter = computed(() => {
+  if (props.frontmatterReplace && typeof props.frontmatterReplace === 'object') {
+    const replaceKeys = Object.keys(props.frontmatterReplace)
+    return Object.entries(_frontmatter).reduce((acc, [key, value]) => ({ ...acc, [key]: replaceKeys.includes(key) ? value : undefined }), {})
+  }
+
+  return { ..._frontmatter, ...props.frontmatterMerge }
+})`,
+      )
 
       if (options.exportFrontmatter) {
         frontmatterExportsLines = Object.entries(frontmatter)
@@ -189,7 +201,7 @@ export function createMarkdown(options: ResolvedOptions) {
       }
 
       if (!isVue2 && options.exposeFrontmatter && !hasExplicitExports())
-        scriptLines.push('defineExpose({ frontmatter })')
+        scriptLines.push('defineExpose({ frontmatter: frontmatter.value })')
 
       if (!isVue2 && headEnabled && head) {
         // @ts-expect-error legacy option
