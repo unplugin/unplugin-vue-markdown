@@ -1,6 +1,6 @@
 import type { UnpluginFactory } from 'unplugin'
 import type { Options } from './types'
-import { createFilter } from '@rollup/pluginutils'
+import { createFilter } from 'unplugin-utils'
 import { createUnplugin } from 'unplugin'
 import { createMarkdown } from './core/markdown'
 import { resolveOptions } from './core/options'

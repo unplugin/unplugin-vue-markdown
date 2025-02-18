@@ -1,13 +1,13 @@
 import type { ComponentPluginOptions } from '@mdit-vue/plugin-component'
 import type { FrontmatterPluginOptions } from '@mdit-vue/plugin-frontmatter'
 import type { MarkdownItEnv } from '@mdit-vue/types'
-import type { FilterPattern } from '@rollup/pluginutils'
 import type {
   MarkdownItAsync,
   MarkdownItAsyncOptions,
   PluginSimple as MarkdownItPluginSimple,
   PluginWithOptions as MarkdownItPluginWithOptions,
 } from 'markdown-it-async'
+import type { FilterPattern } from 'unplugin-utils'
 import type { preprocessHead } from './core/head'
 
 /** a `<meta />` property in HTML is defined with the following name/values */
