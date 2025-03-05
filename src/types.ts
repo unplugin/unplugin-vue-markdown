@@ -6,6 +6,7 @@ import type {
   MarkdownItAsyncOptions,
   PluginSimple as MarkdownItPluginSimple,
   PluginWithOptions as MarkdownItPluginWithOptions,
+  Token,
 } from 'markdown-it-async'
 import type { FilterPattern } from 'unplugin-utils'
 import type { preprocessHead } from './core/head'
@@ -197,6 +198,10 @@ export interface Options {
    */
   transforms?: {
     before?: (code: string, id: string) => string | Promise<string>
+    /**
+     * run (async) manipulations on tokens array (side-effects only)
+     */
+    renderingInside?: (tokens: Token[], options: MarkdownItAsyncOptions, env: any, self: MarkdownItAsync) => null | Promise<null>
     after?: (code: string, id: string) => string | Promise<string>
     /**
      * Return extra code to be injected into the `<script>` tag
