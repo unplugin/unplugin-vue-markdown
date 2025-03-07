@@ -6,6 +6,7 @@ import type {
   MarkdownItAsyncOptions,
   PluginSimple as MarkdownItPluginSimple,
   PluginWithOptions as MarkdownItPluginWithOptions,
+  Token,
 } from 'markdown-it-async'
 import type { FilterPattern } from 'unplugin-utils'
 import type { preprocessHead } from './core/head'
@@ -196,12 +197,22 @@ export interface Options {
    * Custom tranformations apply before and after the markdown transformation
    */
   transforms?: {
-    before?: (code: string, id: string) => string | Promise<string>
-    after?: (code: string, id: string) => string | Promise<string>
+    /**
+     * Pre-transformations
+     */
+    before?: (code: string, id: string) => Awaitable<string | void>
+    /**
+     * Transform internal MarkdownIt tokens
+     */
+    tokens?: (tokens: Token[], options: MarkdownItAsyncOptions, env: any, self: MarkdownItAsync) => Awaitable<Token[] | void>
+    /**
+     * Post-transformations
+     */
+    after?: (code: string, id: string) => Awaitable<string | void>
     /**
      * Return extra code to be injected into the `<script>` tag
      */
-    extraScripts?: (frontmatter: Record<string, any>, id: string) => string[] | Promise<string[]>
+    extraScripts?: (frontmatter: Record<string, any>, id: string) => Awaitable<string[] | void>
   }
 
   include?: FilterPattern
@@ -213,3 +224,5 @@ export interface ResolvedOptions extends Required<Options> { }
 export interface MarkdownEnv extends MarkdownItEnv {
   id: string
 }
+
+export type Awaitable<T> = T | Promise<T>

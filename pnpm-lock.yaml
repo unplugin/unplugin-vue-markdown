@@ -24,8 +24,8 @@ importers:
         specifier: ^14.1.0
         version: 14.1.0
       markdown-it-async:
-        specifier: ^2.0.0
-        version: 2.0.0
+        specifier: ^2.1.0
+        version: 2.1.0
       unplugin:
         specifier: ^2.2.0
         version: 2.2.0
@@ -3736,8 +3736,8 @@ packages:
     resolution: {integrity: sha512-g3FeP20LNwhALb/6Cz6Dd4F2ngze0jz7tbzrD2wAV+o9FeNHe4rL+yK2md0J/fiSf1sa1ADhXqi5+oVwOM/eGw==}
     engines: {node: '>=8'}
 
-  markdown-it-async@2.0.0:
-    resolution: {integrity: sha512-jBthmQR5MwXR9Y8Y0teRoZAenaKQMdjuTfpbNARqMBSRPvyzyXCVduHZHakyyhL3ugIacCobXJrO07t277sIjw==}
+  markdown-it-async@2.1.0:
+    resolution: {integrity: sha512-sEC6QMni6J7DSSErSRbhCfK6RA7hGfhZa+AXfVrBB7KaNWra7kIrBkualz+g5nPk4NeSRYe2vN2vHH4LJ4lFXg==}
 
   markdown-it-prism@2.3.0:
     resolution: {integrity: sha512-ePtHY80gZyeje4bn3R3SL0jpd1C9HFaYffJW2Ma0YD+tspqa2v9TuVwUyFwboFu4jnFNcO8oPQROgbcYJbmBvw==}
@@ -9527,7 +9527,7 @@ snapshots:
     dependencies:
       semver: 6.3.1
 
-  markdown-it-async@2.0.0:
+  markdown-it-async@2.1.0:
     dependencies:
       '@types/markdown-it': 14.1.2
       markdown-it: 14.1.0
