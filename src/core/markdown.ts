@@ -114,13 +114,12 @@ export function createMarkdown(options: ResolvedOptions) {
     raw = await transforms.before?.(raw, id) ?? raw
 
     const env: MarkdownEnv = { id }
-    // let html = await md.renderAsync(raw, env)
-    const tokens = md.parse(raw, env)
-    if (transforms.renderingInside) {
-      // only side-effects on tokens array.
-      await transforms.renderingInside(tokens, options.markdownItOptions, env, md)
-    }
-    let html = await md.rendererRenderAsync(tokens)
+
+    let tokens = md.parse(raw, env)
+
+    tokens = await transforms.tokens?.(tokens, options.markdownItOptions, env, md) ?? tokens
+
+    let html = await md.rendererRenderAsync(tokens, md.options as any, env)
 
     const { excerpt = '', frontmatter: data = null } = env
 
