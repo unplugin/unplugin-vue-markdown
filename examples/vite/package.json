@@ -6,19 +6,19 @@
     "build": "cross-env DEBUG=unplugin-vue-markdown:* vite build"
   },
   "dependencies": {
-    "@unhead/vue": "^1.11.19",
-    "vue": "^3.5.13",
-    "vue-router": "^4.5.0"
+    "@unhead/vue": "^2.0.11",
+    "vue": "^3.5.17",
+    "vue-router": "^4.5.1"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.2.1",
+    "@vitejs/plugin-vue": "^6.0.0",
     "cross-env": "^7.0.3",
-    "markdown-it-prism": "^2.3.0",
-    "prismjs": "^1.29.0",
-    "typescript": "^5.7.3",
+    "markdown-it-prism": "^3.0.0",
+    "prismjs": "^1.30.0",
+    "typescript": "^5.8.3",
     "unplugin-vue-markdown": "workspace:*",
-    "vite": "^6.1.0",
-    "vite-plugin-inspect": "^10.2.1",
-    "vite-plugin-pages": "^0.32.4"
+    "vite": "^7.0.0",
+    "vite-plugin-inspect": "^11.3.0",
+    "vite-plugin-pages": "^0.33.1"
   }
 }

@@ -202,7 +202,7 @@ export default {
 
 ```js
 // src/main.js
-import { createHead } from '@unhead/vue' // <--
+import { createHead } from '@unhead/vue/client' // <--
 import { createApp } from 'vue'
 
 const app = createApp(App)

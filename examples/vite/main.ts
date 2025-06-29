@@ -1,4 +1,4 @@
-import { createHead } from '@unhead/vue'
+import { createHead } from '@unhead/vue/client'
 import routes from 'pages-generated'
 import { createApp } from 'vue'
 import {

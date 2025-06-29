@@ -2,7 +2,7 @@
   "name": "unplugin-vue-markdown",
   "type": "module",
   "version": "28.3.1",
-  "packageManager": "pnpm@10.4.1",
+  "packageManager": "pnpm@10.12.4",
   "description": "Compile Markdown to Vue component",
   "author": "Anthony Fu <anthonyfu117@hotmail.com>",
   "license": "MIT",
@@ -62,6 +62,9 @@
       ]
     }
   },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "tsup --watch",
     "example:dev": "npm -C examples/vite run dev",
@@ -78,34 +81,34 @@
     "vite": "^2.0.0 || ^3.0.0-0 || ^4.0.0-0 || ^5.0.0-0 || ^6.0.0"
   },
   "dependencies": {
-    "@mdit-vue/plugin-component": "^2.1.3",
-    "@mdit-vue/plugin-frontmatter": "^2.1.3",
-    "@mdit-vue/types": "^2.1.0",
+    "@mdit-vue/plugin-component": "^2.1.4",
+    "@mdit-vue/plugin-frontmatter": "^2.1.4",
+    "@mdit-vue/types": "^2.1.4",
     "@types/markdown-it": "^14.1.2",
     "markdown-it": "^14.1.0",
-    "markdown-it-async": "^2.0.0",
-    "unplugin": "^2.2.0",
+    "markdown-it-async": "^2.2.0",
+    "unplugin": "^2.3.5",
     "unplugin-utils": "^0.2.4"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^4.3.0",
-    "@antfu/ni": "^23.3.1",
-    "@antfu/utils": "^9.1.0",
-    "@types/node": "^22.13.4",
-    "@unhead/vue": "^1.11.19",
+    "@antfu/eslint-config": "^4.16.1",
+    "@antfu/ni": "^25.0.0",
+    "@antfu/utils": "^9.2.0",
+    "@types/node": "^24.0.7",
+    "@unhead/vue": "^2.0.11",
     "@vue/test-utils": "^2.4.6",
-    "ansis": "^3.15.0",
-    "bumpp": "^10.0.3",
-    "eslint": "^9.20.1",
+    "ansis": "^4.1.0",
+    "bumpp": "^10.2.0",
+    "eslint": "^9.30.0",
     "fast-glob": "^3.3.3",
-    "rollup": "^4.34.8",
-    "tsup": "^8.3.6",
-    "tsx": "^4.19.2",
-    "typescript": "^5.7.3",
-    "vite": "^6.1.0",
-    "vitest": "^3.0.5",
-    "vue": "^3.5.13",
-    "webpack": "^5.98.0"
+    "rollup": "^4.44.1",
+    "tsup": "^8.5.0",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3",
+    "vite": "^7.0.0",
+    "vitest": "^3.2.4",
+    "vue": "^3.5.17",
+    "webpack": "^5.99.9"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
