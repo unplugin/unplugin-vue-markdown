@@ -67,15 +67,15 @@
   },
   "scripts": {
     "dev": "tsup --watch",
-    "example:dev": "npm -C examples/vite run dev",
-    "example:build": "npm -C examples/vite run build",
+    "example:dev": "pnpm -C examples/vite run dev",
+    "example:build": "pnpm -C examples/vite run build",
     "build": "tsup",
     "build:fix": "tsx scripts/postbuild.ts",
     "test": "vitest",
     "test:update": "vitest -u",
     "lint": "eslint .",
-    "prepublishOnly": "npm run build",
-    "release": "bumpp && npm publish"
+    "prepublishOnly": "pnpm run build",
+    "release": "bumpp"
   },
   "peerDependencies": {
     "vite": "^2.0.0 || ^3.0.0-0 || ^4.0.0-0 || ^5.0.0-0 || ^6.0.0 || ^7.0.0"
