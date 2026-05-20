@@ -5,3 +5,6 @@ ignoreWorkspaceRootCheck: true
 strictPeerDependencies: false
 shamefullyHoist: true
 shellEmulator: true
+allowBuilds:
+  core-js: true
+  esbuild: true

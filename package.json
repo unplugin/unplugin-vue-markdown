@@ -2,7 +2,7 @@
   "name": "unplugin-vue-markdown",
   "type": "module",
   "version": "30.0.0",
-  "packageManager": "pnpm@10.17.1",
+  "packageManager": "pnpm@11.1.3",
   "description": "Compile Markdown to Vue component",
   "author": "Anthony Fu <anthonyfu117@hotmail.com>",
   "license": "MIT",
@@ -18,59 +18,42 @@
     "unplugin",
     "markdown-exit"
   ],
+  "sideEffects": false,
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "default": "./dist/index.js"
     },
     "./vite": {
       "types": "./dist/vite.d.ts",
-      "import": "./dist/vite.js",
-      "require": "./dist/vite.cjs"
+      "default": "./dist/vite.js"
     },
     "./webpack": {
       "types": "./dist/webpack.d.ts",
-      "import": "./dist/webpack.js",
-      "require": "./dist/webpack.cjs"
+      "default": "./dist/webpack.js"
     },
     "./rollup": {
       "types": "./dist/rollup.d.ts",
-      "import": "./dist/rollup.js",
-      "require": "./dist/rollup.cjs"
+      "default": "./dist/rollup.js"
     },
     "./esbuild": {
       "types": "./dist/esbuild.d.ts",
-      "import": "./dist/esbuild.js",
-      "require": "./dist/esbuild.cjs"
+      "default": "./dist/esbuild.js"
     },
     "./types": {
       "types": "./dist/types.d.ts",
-      "import": "./dist/types.js",
-      "require": "./dist/types.cjs"
+      "default": "./dist/types.js"
     },
     "./*": "./*"
-  },
-  "main": "dist/index.cjs",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "typesVersions": {
-    "*": {
-      "*": [
-        "./dist/*",
-        "./*"
-      ]
-    }
   },
   "engines": {
     "node": ">=20"
   },
   "scripts": {
-    "dev": "tsup --watch",
+    "dev": "tsdown --watch",
     "example:dev": "pnpm -C examples/vite run dev",
     "example:build": "pnpm -C examples/vite run build",
-    "build": "tsup",
-    "build:fix": "tsx scripts/postbuild.ts",
+    "build": "tsdown",
     "test": "vitest",
     "test:update": "vitest -u",
     "lint": "eslint .",
@@ -85,7 +68,7 @@
     "@mdit-vue/plugin-frontmatter": "^3.0.2",
     "@mdit-vue/types": "^3.0.2",
     "markdown-exit": "^1.0.0-beta.8",
-    "unplugin": "^2.3.10",
+    "unplugin": "^3.0.0",
     "unplugin-utils": "^0.3.0"
   },
   "devDependencies": {
@@ -95,23 +78,14 @@
     "@types/node": "^24.5.2",
     "@unhead/vue": "^2.0.17",
     "@vue/test-utils": "^2.4.6",
-    "ansis": "^4.1.0",
     "bumpp": "^10.2.3",
     "eslint": "^9.36.0",
-    "fast-glob": "^3.3.3",
     "rollup": "^4.52.2",
-    "tsup": "^8.5.0",
-    "tsx": "^4.20.5",
+    "tsdown": "^0.22.0",
     "typescript": "^5.9.2",
     "vite": "^7.1.7",
     "vitest": "^3.2.4",
     "vue": "^3.5.21",
     "webpack": "^5.101.3"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "core-js",
-      "esbuild"
-    ]
   }
 }
