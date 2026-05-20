@@ -67,25 +67,25 @@
     "@mdit-vue/plugin-component": "^3.0.2",
     "@mdit-vue/plugin-frontmatter": "^3.0.2",
     "@mdit-vue/types": "^3.0.2",
-    "markdown-exit": "^1.0.0-beta.8",
+    "markdown-exit": "^1.0.0-beta.9",
     "unplugin": "^3.0.0",
-    "unplugin-utils": "^0.3.0"
+    "unplugin-utils": "^0.3.1"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^5.4.1",
-    "@antfu/ni": "^26.0.1",
-    "@antfu/utils": "^9.2.1",
-    "@types/node": "^24.5.2",
-    "@unhead/vue": "^2.0.17",
-    "@vue/test-utils": "^2.4.6",
-    "bumpp": "^10.2.3",
-    "eslint": "^9.36.0",
-    "rollup": "^4.52.2",
+    "@antfu/eslint-config": "^9.0.0",
+    "@antfu/ni": "^30.1.0",
+    "@antfu/utils": "^9.3.0",
+    "@types/node": "^25.9.1",
+    "@unhead/vue": "^2.1.15",
+    "@vue/test-utils": "^2.4.10",
+    "bumpp": "^11.1.0",
+    "eslint": "^10.4.0",
+    "rollup": "^4.60.4",
     "tsdown": "^0.22.0",
-    "typescript": "^5.9.2",
-    "vite": "^7.1.7",
-    "vitest": "^3.2.4",
-    "vue": "^3.5.21",
-    "webpack": "^5.101.3"
+    "typescript": "^6.0.3",
+    "vite": "^8.0.13",
+    "vitest": "^4.1.6",
+    "vue": "^3.5.34",
+    "webpack": "^5.106.2"
   }
 }

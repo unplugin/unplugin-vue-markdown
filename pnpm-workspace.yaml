@@ -1,10 +1,14 @@
+ignoreWorkspaceRootCheck: true
+strictPeerDependencies: false
+minimumReleaseAgeExclude:
+  - '@types/node@25.9.1'
+shamefullyHoist: true
+shellEmulator: true
+trustPolicy: no-downgrade
+
 packages:
   - examples/*
 
-ignoreWorkspaceRootCheck: true
-strictPeerDependencies: false
-shamefullyHoist: true
-shellEmulator: true
 allowBuilds:
   core-js: true
   esbuild: true
