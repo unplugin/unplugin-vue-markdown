@@ -6,9 +6,9 @@
     "build": "DEBUG=\"unplugin-vue-markdown:*\" vite build"
   },
   "dependencies": {
-    "@unhead/vue": "^2.1.15",
+    "@unhead/vue": "^3.1.0",
     "vue": "^3.5.34",
-    "vue-router": "^4.6.4"
+    "vue-router": "^5.0.7"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.7",
