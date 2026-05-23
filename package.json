@@ -20,35 +20,21 @@
   ],
   "sideEffects": false,
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
-    },
-    "./vite": {
-      "types": "./dist/vite.d.ts",
-      "default": "./dist/vite.js"
-    },
-    "./webpack": {
-      "types": "./dist/webpack.d.ts",
-      "default": "./dist/webpack.js"
-    },
-    "./rollup": {
-      "types": "./dist/rollup.d.ts",
-      "default": "./dist/rollup.js"
-    },
-    "./esbuild": {
-      "types": "./dist/esbuild.d.ts",
-      "default": "./dist/esbuild.js"
-    },
-    "./types": {
-      "types": "./dist/types.d.ts",
-      "default": "./dist/types.js"
-    },
-    "./*": "./*"
+    ".": "./dist/index.mjs",
+    "./esbuild": "./dist/esbuild.mjs",
+    "./rollup": "./dist/rollup.mjs",
+    "./rspack": "./dist/rspack.mjs",
+    "./types": "./dist/types.mjs",
+    "./vite": "./dist/vite.mjs",
+    "./webpack": "./dist/webpack.mjs",
+    "./package.json": "./package.json"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "tsdown --watch",
     "example:dev": "pnpm -C examples/vite run dev",
@@ -57,11 +43,11 @@
     "test": "vitest",
     "test:update": "vitest -u",
     "lint": "eslint .",
-    "prepublishOnly": "pnpm run build",
+    "prepack": "pnpm run build",
     "release": "bumpp"
   },
   "peerDependencies": {
-    "vite": "^2.0.0 || ^3.0.0-0 || ^4.0.0-0 || ^5.0.0-0 || ^6.0.0 || ^7.0.0"
+    "vite": "^2.0.0 || ^3.0.0-0 || ^4.0.0-0 || ^5.0.0-0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0"
   },
   "dependencies": {
     "@mdit-vue/plugin-component": "^3.0.2",
@@ -87,5 +73,10 @@
     "vitest": "^4.1.6",
     "vue": "^3.5.34",
     "webpack": "^5.106.2"
+  },
+  "inlinedDependencies": {
+    "@antfu/utils": "9.3.0",
+    "@types/estree": "1.0.8",
+    "rollup": "4.60.4"
   }
 }
