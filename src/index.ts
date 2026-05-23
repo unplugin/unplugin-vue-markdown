@@ -23,6 +23,9 @@ export const unpluginFactory: UnpluginFactory<Options> = (userOptions = {}) => {
       return filter(id)
     },
     async transform(raw, id) {
+      if (id.includes('?vue&type=')) {
+        return null
+      }
       try {
         return await markdownToVue(id, raw)
       }
