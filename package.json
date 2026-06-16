@@ -12,7 +12,9 @@
     "type": "git",
     "url": "https://github.com/unplugin/unplugin-vue-markdown"
   },
-  "bugs": "https://github.com/unplugin/unplugin-vue-markdown/issues",
+  "bugs": {
+    "url": "https://github.com/unplugin/unplugin-vue-markdown/issues"
+  },
   "keywords": [
     "vite",
     "unplugin",
