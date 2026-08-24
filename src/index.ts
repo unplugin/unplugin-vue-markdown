@@ -23,6 +23,12 @@ export const unpluginFactory: UnpluginFactory<Options> = (userOptions = {}) => {
       return filter(id)
     },
     async transform(raw, id) {
+      // Skip Vue SFC sub-block requests (e.g. `foo.md?vue&type=script&setup=true&lang.ts`).
+      // These are emitted by @vitejs/plugin-vue after the `.md` file has already
+      // been compiled to an SFC; re-processing them would wrap the already-compiled
+      // script back into a markdown template and break the build. See #53.
+      if (id.includes('?vue&type='))
+        return null
       try {
         return await markdownToVue(id, raw)
       }
