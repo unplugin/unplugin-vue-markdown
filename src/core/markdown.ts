@@ -6,7 +6,7 @@ import { frontmatterPlugin } from '@mdit-vue/plugin-frontmatter'
 import { createMarkdownExit } from 'markdown-exit'
 import { preprocessHead } from './head'
 
-const scriptSetupRE = /<\s*script([^>]*)\bsetup\b([^>]*)>([\s\S]*)<\/script>/g
+const scriptSetupRE = /<\s*script([^>]*)\bsetup\b([^>]*)>([\s\S]*?)<\/script>/g
 const defineExposeRE = /defineExpose\s*\(/g
 
 const EXPORTS_KEYWORDS = [
