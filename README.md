@@ -226,7 +226,7 @@ For more options available, please refer to [`@unhead/vue`'s docs](https://unhea
 
 ## Options
 
-`unplugin-vue-markdown` uses [`markdown-exit`](https://github.com/nicepkg/markdown-exit) under the hood, a TypeScript rewrite of markdown-it with built-in async rendering. markdown-it plugins are compatible.
+`unplugin-vue-markdown` uses [`markdown-exit`](https://github.com/serkodev/markdown-exit) under the hood, a TypeScript rewrite of markdown-it with built-in async rendering. markdown-it plugins are compatible.
 
 > **Note:** The old option names (`markdownItOptions`, `markdownItUses`, `markdownItSetup`) are deprecated but still functional.
 
