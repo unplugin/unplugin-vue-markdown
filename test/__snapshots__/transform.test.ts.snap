@@ -100,6 +100,22 @@ import Foo from './Foo.vue'
 </script>"
 `;
 
+exports[`transform > script setup inside html comment 1`] = `
+"<template><div class="markdown-body"><h1>Hello</h1>
+<!--
+<script setup>
+const commented = 1
+</script>
+-->
+
+</div></template>
+<script setup lang="ts">
+const frontmatter = {}
+defineExpose({ frontmatter })
+import Foo from './Foo.vue'
+</script>"
+`;
+
 exports[`transform > style 1`] = `
 "<template><div class="markdown-body"><h1>Hello</h1>
 
