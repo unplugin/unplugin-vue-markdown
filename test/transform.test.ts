@@ -40,6 +40,40 @@ import Foo from './Foo.vue'
     expect((await markdownToVue('', md)).code).toMatchSnapshot()
   })
 
+  it('script setup inside html comment', async () => {
+    const md = `
+# Hello
+
+<!--
+<script setup>
+const commented = 1
+</script>
+-->
+
+<script setup lang="ts">
+import Foo from './Foo.vue'
+</script>
+`
+    const code = (await markdownToVue('', md)).code
+    expect(code).toContain('import Foo from \'./Foo.vue\'')
+    const scriptSetup = code.slice(code.indexOf('</template>'))
+    expect(scriptSetup).not.toContain('const commented = 1')
+    expect(code).toMatchSnapshot()
+  })
+
+  it('script setup inside an unclosed html comment', async () => {
+    const md = `
+# Hello
+
+<!--
+<script setup>
+const commented = 1
+</script>
+`
+    const code = (await markdownToVue('', md)).code
+    expect(code.slice(code.indexOf('</template>'))).not.toContain('const commented = 1')
+  })
+
   it('exposes frontmatter', async () => {
     const md = `---
 title: Hey

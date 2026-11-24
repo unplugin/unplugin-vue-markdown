@@ -6,7 +6,7 @@ import { frontmatterPlugin } from '@mdit-vue/plugin-frontmatter'
 import { createMarkdownExit } from 'markdown-exit'
 import { preprocessHead } from './head'
 
-const scriptSetupRE = /<\s*script([^>]*)\bsetup\b([^>]*)>([\s\S]*)<\/script>/g
+const scriptSetupRE = /<!--[\s\S]*?(?:-->|$)|<\s*script([^>]*)\bsetup\b([^>]*)>([\s\S]*)<\/script>/g
 const defineExposeRE = /defineExpose\s*\(/g
 
 const EXPORTS_KEYWORDS = [
@@ -38,7 +38,9 @@ interface ScriptMeta {
 
 function extractScriptSetup(html: string) {
   const scripts: ScriptMeta[] = []
-  html = html.replace(scriptSetupRE, (_, attr1, attr2, code) => {
+  html = html.replace(scriptSetupRE, (match, attr1, attr2, code) => {
+    if (match.startsWith('<!--'))
+      return match
     scripts.push({
       code,
       attr: `${attr1} ${attr2}`.trim(),
